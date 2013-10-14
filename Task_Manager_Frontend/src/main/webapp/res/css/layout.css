@@ -3,7 +3,7 @@
     Created on : Oct 14, 2013, 9:12:16 PM
     Author     : Adam Clark
     Description:
-        Purpose of the stylesheet follows.
+        tänk på att background color endast hämtas om sidan inte kan hitta background-image. dock fungerar inte background image just nu.
 */
 
 root { 
@@ -17,5 +17,7 @@ body {
     margin-right: auto;
     border-style: groove;
     border-color: teal;
+    background-image:url('/res/img/bg.jpg');
+    background-color: pink;
 }
 
