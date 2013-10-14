@@ -9,5 +9,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        
+        <a href="page2.jspx">Länk till sida 2</a>
     </body>
 </html>
