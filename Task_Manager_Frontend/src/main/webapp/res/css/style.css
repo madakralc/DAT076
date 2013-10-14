@@ -12,5 +12,6 @@ root {
 
 h1 {
 font-size: 20pt;
+font-weight: bold;
+color: teal;
 }
-

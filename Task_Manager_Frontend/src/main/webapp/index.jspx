@@ -7,13 +7,26 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
 
     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <!-- används i workshops, behöver ta reda på vad de betyder mer exakt -->
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" />
 
-    <!-- any content can be specified here, e.g.: -->
-    <jsp:element name="text">
-        <jsp:attribute name="lang">EN</jsp:attribute>
-        <jsp:body>Hello World new jspx file!</jsp:body>
-        <a href="page2.jspx">En länk till en annan sida</a>
-        
-    </jsp:element>
-
+    <html>
+        <head>
+            <title>Task Manager App</title> 
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <link rel="stylesheet" type="text/css" href="res/css/layout.css" />
+            <link rel="stylesheet" type="text/css" href="res/css/style.css" />
+        </head>
+        <body>
+            <!-- Static content so use static include (other option is jsp:include) -->
+            <!-- <jsp:directive.include file="WEB-INF/jsp/header.jspx" /> -->
+            <!-- <jsp:directive.include file="WEB-INF/jsp/mainMenu.jspx"/> -->
+            <section>
+                <h1>Fungerar css mallen? Händer det något när vi kör h1?</h1>
+            </section>
+            <!-- <jsp:directive.include file="WEB-INF/jsp/footer.jspx" /> -->
+        </body>
+    </html>
 </jsp:root>
