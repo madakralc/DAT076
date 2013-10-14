@@ -1,0 +1,21 @@
+/* 
+    Document   : layout
+    Created on : Oct 14, 2013, 9:12:16 PM
+    Author     : Adam Clark
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body { 
+    display: block;
+    width: 60em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: groove;
+    border-color: teal;
+}
+
