@@ -1,0 +1,15 @@
+Mon Oct 14 17:11:01 CEST 2013 : Apache Derby Network Server - 10.9.1.0 - (1344872) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Mon Oct 14 17:11:01 CEST 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-0141-b785-3001-0000675f350a 
+on database directory Z:\Utbildning\Chalmers\DAT076\Project\DAT076\Task_Manager_Backend\database01  with class loader sun.misc.Launcher$AppClassLoader@13eae6e 
+Loaded from file:/C:/Program%20Files%20(x86)/glassfish-4.0/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_01-b08
+user.dir=C:\Program Files (x86)\glassfish-4.0\javadb
+derby.system.home=Z:\Utbildning\Chalmers\DAT076\Project\DAT076\Task_Manager_Backend
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Oct 14 17:11:04 CEST 2013:
+Shutting down instance a816c00e-0141-b785-3001-0000675f350a on database directory Z:\Utbildning\Chalmers\DAT076\Project\DAT076\Task_Manager_Backend\database01 with class loader sun.misc.Launcher$AppClassLoader@13eae6e 
+Mon Oct 14 17:11:09 CEST 2013 Thread[DRDAConnThread_4,5,main] (DATABASE = database01), (DRDAID = {2}), Database 'database01' shutdown.
