@@ -30,9 +30,7 @@
             <section>
                 <h1>Fungerar css mallen? Händer det något när vi kör h1?</h1>
             </section>
-           <jsp:directive.include file="WEB-INF/static/footer.jspx" />
-
-            
+           <jsp:directive.include file="WEB-INF/static/footer.jspx" />   
         </body>
     </html>
 </jsp:root>

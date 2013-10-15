@@ -4,14 +4,25 @@
     Created on : Oct 14, 2013, 8:41:58 PM
     Author     : Adam
 -->
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
 
     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" />
 
-    <!-- any content can be specified here, e.g.: -->
+    <!-- något som inte fungerar här, man kan inte se reques. får titta på det senare -->
     <jsp:element name="text">
-        <jsp:attribute name="lang">EN</jsp:attribute>
-        <jsp:body>Något gick fel din n00b, denna sida finns ej! Försök igen.</jsp:body>
+        <jsp:body>
+            
+            <h1>Något gick fel din n00b, denna sida finns ej! Försök igen.</h1>
+            <h2>NOT FOUND ${request}</h2>
+        
+        </jsp:body>
     </jsp:element>
 
 </jsp:root>
