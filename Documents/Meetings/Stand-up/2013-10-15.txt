@@ -1,0 +1,15 @@
+Datum:2013-10-15
+Närvarande: Dag, Adam, Oskar, Fredrik
+1.What did we accomplish yesterday?
+Vi skapade en grundstruktur för projektet samt dokumenterade hur programets grafiska delar ska integrera med varnadra. 
+Vi skapade en ny git samt sätta upp regler för hur vi skulle kommuicera innom projekgruppen.
+2.What will we do today?
+Vi kommer att fortsätta utvelingen av databasen samt vidarutveckla kodskelettet. 
+Bygga grundläggande klasser och html-filer.
+Skapa en heder och fotter som är statisk för alla sidor.
+En abour sida som man alltid kan navigera till.
+SQL-kod för geberaerainfg av testdata och abstraktionsaklasser för databasen. 
+JUnit - tester 
+Create needed database-views. 
+3.What obstacles are impeding our progress?
+Diffret versions of the database.  
