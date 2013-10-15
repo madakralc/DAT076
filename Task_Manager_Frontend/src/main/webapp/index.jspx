@@ -4,7 +4,11 @@
     Created on : Oct 14, 2013, 8:24:35 PM
     Author     : Adam
 -->
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
 
     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
     <!-- används i workshops, behöver ta reda på vad de betyder mer exakt -->
@@ -26,7 +30,9 @@
             <section>
                 <h1>Fungerar css mallen? Händer det något när vi kör h1?</h1>
             </section>
-            <!-- <jsp:directive.include file="WEB-INF/jsp/footer.jspx" /> -->
+           <jsp:directive.include file="WEB-INF/static/footer.jspx" />
+
+            
         </body>
     </html>
 </jsp:root>
