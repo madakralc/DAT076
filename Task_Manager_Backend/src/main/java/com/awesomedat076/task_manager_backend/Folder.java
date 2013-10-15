@@ -44,6 +44,16 @@ public class Folder {
         if (shoppingList != null)
             shoppingLists.remove(shoppingList);
     }
+    
+    /**
+     * Removes the specified shopping list from the folder.
+     * 
+     * @param id 
+     */
+    public void remove(ShoppingList shoppingList) {
+        if (shoppingList != null && shoppingLists.indexOf(shoppingList) > 0)
+            shoppingLists.remove(shoppingList);
+    }
 
     /**
      * Update an existing shopping list.

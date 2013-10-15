@@ -9,12 +9,12 @@ package com.awesomedat076.task_manager_backend;
  * 
  * @author Oscar Blomqvist
  */
-public class User extends Entity {
+public class User {
     
     /**
      * The folder that contains the users lists.
      */
-    protected Folder folder;
+    protected transient Folder folder;
     
     /**
      * The name of the user.
@@ -29,24 +29,68 @@ public class User extends Entity {
     /**
      * @param id
      * @param name
-     * @param email 
-     * @param folder
+     * @param email
      */
-    public User(int id, String name, String email, Folder folder){
-        super(id);
+    public User(String name, String email){
         this.name = name;
         this.email = email;
     }
     
     /**
-     * @param id
-     * @param name
-     * @param email
+     * Adds a shopping list to the users folder.
+     * 
+     * @param shoppingList 
      */
-    public User(int id, String name, String email){
-        super(id);
-        this.name = name;
-        this.email = email;
+    public void addShoppingListToFolder(ShoppingList shoppingList) {
+        folder.add(shoppingList);
+    }
+
+    /**
+     * Removes a shopping list from the users folder.
+     * 
+     * @param shoppingList 
+     */
+    public void removeShoppingListFromFolder(ShoppingList shoppingList) {
+        folder.remove(shoppingList.getId());
+    }
+
+    /**
+     * Clears the users folder.
+     */
+    public void emptyFolder() {
+        folder = new Folder();
+    }
+
+    /**
+     * Get the users folder.
+     * 
+     * @return 
+     */
+    public Folder getFolder() {
+        return folder;
+    }
+
+    /**
+     * Returns the users email.
+     * 
+     * @return 
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Returns the name of the user.
+     * 
+     * @return 
+     */
+    public String getName() {
+        return name;
+    }
+    
+    @Override
+    public String toString() {
+        return "User{" + ", name=" + name + ", email=" + email + '}';
     }
     
 }
