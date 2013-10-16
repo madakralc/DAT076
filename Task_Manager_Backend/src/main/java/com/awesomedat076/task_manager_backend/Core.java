@@ -12,8 +12,30 @@ package com.awesomedat076.task_manager_backend;
 public class Core {
     
     /**
+     * The name of the default persistence unit that should be used.
+     */
+    public static final String DEFAULT_PERSISTENCE_UNIT_NAME = "lalala";
+    
+    /**
      * The container of the users.
      */
-    //protected final UserRegistry;
+    protected UserRegistry userRegistry;
+    
+    public Core (){
+        userRegistry = new UserRegistry(DEFAULT_PERSISTENCE_UNIT_NAME);
+    }
+    
+    public Core (String puName){
+        userRegistry = new UserRegistry(puName);
+    }
+    
+    /**
+     * Returns the user registry.
+     * 
+     * @return 
+     */
+    public UserRegistry getUserRegistry(){
+        return userRegistry;
+    }
     
 }

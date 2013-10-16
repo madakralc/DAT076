@@ -8,6 +8,7 @@ import java.util.Random;
 
 /**
  * Abstract class that represents an entity.
+ * NOT USED!!!
  * 
  * @author Oscar Blomqvist
  */

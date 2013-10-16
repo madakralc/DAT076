@@ -197,4 +197,32 @@ public class UserRegistry {
         return found;
     }
     
+    /**
+     * Clears all the users in the user registry.
+     */
+    public void clear() {
+        
+        //Get all the users.
+        List<User> users= get(true, 1, 1);
+        
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            
+            /**
+             * Remove all the users.
+             */
+            for(User user : users){
+                em.getTransaction().begin();
+                em.remove(user);
+                em.getTransaction().commit();
+            }
+        } catch (Exception ex) {
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+    
 }
