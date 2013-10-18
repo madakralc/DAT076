@@ -5,10 +5,7 @@
 package com.awesomedat076.task_manager_backend;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -48,9 +45,9 @@ public class UserRegistry {
      * @param name
      * @return 
      */
-    public List<User> getByName(String name) {
-        List<User> found = new ArrayList<User>();
-        for (User c : getRange(0, getCount()))
+    public List<TaskUser> getByName(String name) {
+        List<TaskUser> found = new ArrayList<>();
+        for (TaskUser c : getRange(0, getCount()))
             if (c.getName().equals(name))
                 found.add(c);
         
@@ -62,7 +59,10 @@ public class UserRegistry {
      * 
      * @param t
      */
-    public void add(User user) {
+    public void add(TaskUser user) {
+        
+        System.out.println("DEBUG: user: " + user.getName());
+        
         if (user == null)
             throw new IllegalArgumentException("Nulls not allowed");
         EntityManager em = null;
@@ -99,7 +99,7 @@ public class UserRegistry {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            User user = (User) em.getReference(User.class, name);
+            TaskUser user = (TaskUser) em.getReference(TaskUser.class, name);
             em.remove(user);
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -115,7 +115,7 @@ public class UserRegistry {
      * 
      * @param user 
      */
-    public void update(User user) {
+    public void update(TaskUser user) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -136,9 +136,9 @@ public class UserRegistry {
      * @param name
      * @return 
      */
-    public User find(String name) {
+    public TaskUser find(String name) {
         EntityManager em = getEntityManager();
-        User user = (User) em.find(User.class, name);
+        TaskUser user = (TaskUser) em.find(TaskUser.class, name);
         return user;
     }
 
@@ -150,8 +150,8 @@ public class UserRegistry {
      * @param nItems
      * @return 
      */
-    public List<User> getRange(int first, int nItems) {
-        return get(false, nItems, first);
+    public List<TaskUser> getRange(int first, int nItems) {
+        return get(false, first, nItems);
     }
 
     /**
@@ -164,7 +164,7 @@ public class UserRegistry {
         int count = -1;
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<User> rt = cq.from(User.class);
+            Root<TaskUser> rt = cq.from(TaskUser.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             count = ((Long) q.getSingleResult()).intValue();
@@ -178,12 +178,12 @@ public class UserRegistry {
     /**
      * Gets a sublist of all the users in the user registry. 
      */
-    protected List<User> get(boolean all, int max, int first) {
+    protected List<TaskUser> get(boolean all, int first, int max) {
         EntityManager em = getEntityManager();
-        List<User> found = new ArrayList<User>();
+        List<TaskUser> found = new ArrayList<>();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(User.class));
+            cq.select(cq.from(TaskUser.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(max);
@@ -203,26 +203,12 @@ public class UserRegistry {
     public void clear() {
         
         //Get all the users.
-        List<User> users= get(true, 1, 1);
+        List<TaskUser> users= get(true, 1, 1);
         
-        EntityManager em = null;
-        try {
-            em = getEntityManager();
-            
-            /**
-             * Remove all the users.
-             */
-            for(User user : users){
-                em.getTransaction().begin();
-                em.remove(user);
-                em.getTransaction().commit();
-            }
-        } catch (Exception ex) {
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-        }
+        System.out.println("DEBUG Users: " + users);
+        
+        for(TaskUser user : users)
+            remove(user.getName());
     }
     
 }

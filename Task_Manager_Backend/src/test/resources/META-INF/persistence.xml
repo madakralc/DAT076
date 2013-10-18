@@ -3,12 +3,12 @@
   <persistence-unit name="task_manager_test_pu" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.awesomedat076.task_manager_backend.ShoppingList</class>
-    <class>com.awesomedat076.task_manager_backend.User</class>
+    <class>com.awesomedat076.task_manager_backend.TaskUser</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/database01"/>
-      <property name="javax.persistence.jdbc.password" value="daggen"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/task_manager_db"/>
+      <property name="javax.persistence.jdbc.password" value="test"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.user" value="dag"/>
+      <property name="javax.persistence.jdbc.user" value="test"/>
       <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
     </properties>
   </persistence-unit>

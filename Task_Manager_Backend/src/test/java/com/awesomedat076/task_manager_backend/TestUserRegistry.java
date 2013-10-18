@@ -40,25 +40,25 @@ public class TestUserRegistry {
         String testEmail = "karl@test.se";
         UserRegistry userRegistry = core.getUserRegistry();
         
-        userRegistry.add(new User(testUserName, testEmail));
+        userRegistry.add(new TaskUser(testUserName, testEmail));
         
         assertTrue(userRegistry.getRange(0, 1).get(0).getName().equals(testUserName) && 
-                userRegistry.getRange(0, 1).get(0).getName().equals(testEmail));
+                userRegistry.getRange(0, 1).get(0).getEmail().equals(testEmail));
         
         //Clears the user registry after the test.
-        //userRegistry.clear();
+        userRegistry.clear();
     }
     
     /**
      * Adds users to the user registry and makes sure that the user registry count matches
      * the amount of added users.
      */
-    //@Test
+    @Test
     public void testGetUserCount() {
         UserRegistry userRegistry = core.getUserRegistry();
         
         for(int i = 0; i < 10; ++i)
-            userRegistry.add(new User("name" + i, "user" + i + "@test.com"));
+            userRegistry.add(new TaskUser("name" + i, "user" + i + "@test.com"));
         
         assertTrue(userRegistry.getCount() == 10);
         
@@ -70,12 +70,12 @@ public class TestUserRegistry {
      * Adds 3 users to the database, then attempts to remove 2 of these users.
      * Finally the test checks if the count of the users is 1.
      */
-    //@Test
+    @Test
     public void testRemoveUser() {
         UserRegistry userRegistry = core.getUserRegistry();
         
         for(int i = 0; i < 3; ++i)
-            userRegistry.add(new User("name" + i, "user" + i + "@test.com"));
+            userRegistry.add(new TaskUser("name" + i, "user" + i + "@test.com"));
         
         /**
          * Remove user 0 and 1.
@@ -94,13 +94,13 @@ public class TestUserRegistry {
      * name, as the users has their name is their primary key. Adds 3 users to
      * the database, and attempts to find one of them.
      */
-    //@Test
+    @Test
     public void testFindUser() {
         UserRegistry userRegistry = core.getUserRegistry();
         
-        userRegistry.add(new User("karl", "karl@test.com"));
-        userRegistry.add(new User("erik", "erik@test.com"));
-        userRegistry.add(new User("gustav", "gustav@test.com"));
+        userRegistry.add(new TaskUser("karl", "karl@test.com"));
+        userRegistry.add(new TaskUser("erik", "erik@test.com"));
+        userRegistry.add(new TaskUser("gustav", "gustav@test.com"));
         
         assertTrue(userRegistry.find("erik").getEmail().equals("erik@test.com"));
         

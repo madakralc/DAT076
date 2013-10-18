@@ -15,7 +15,7 @@ import javax.persistence.Id;
  * @author Oscar Blomqvist
  */
 @Entity
-public class User implements Serializable {
+public class TaskUser implements Serializable {
     
     /**
      * The folder that contains the users lists.
@@ -34,7 +34,7 @@ public class User implements Serializable {
      */
     protected String email;
 
-    public User() {
+    public TaskUser() {
         this.email = "";
     }
     
@@ -43,7 +43,7 @@ public class User implements Serializable {
      * @param name
      * @param email
      */
-    public User(String name, String email){
+    public TaskUser(String name, String email){
         this.name = name;
         this.email = email;
     }
@@ -102,7 +102,7 @@ public class User implements Serializable {
     
     @Override
     public String toString() {
-        return "User{" + ", name=" + name + ", email=" + email + '}';
+        return "TaskUser{name=" + name + ", email=" + email + '}';
     }
     
 }
