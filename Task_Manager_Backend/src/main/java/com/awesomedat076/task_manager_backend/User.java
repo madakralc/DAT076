@@ -4,12 +4,18 @@
  */
 package com.awesomedat076.task_manager_backend;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * Class that represents a user.
  * 
  * @author Oscar Blomqvist
  */
-public class User {
+@Entity
+public class User implements Serializable {
     
     /**
      * The folder that contains the users lists.
@@ -19,12 +25,18 @@ public class User {
     /**
      * The name of the user.
      */
+    @Id
+    @GeneratedValue
     protected String name;
     
     /**
      * The email of the user.
      */
     protected String email;
+
+    public User() {
+        this.email = "";
+    }
     
     /**
      * @param id

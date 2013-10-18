@@ -4,16 +4,24 @@
  */
 package com.awesomedat076.task_manager_backend;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * A shopping list object.
  * 
  * @author Oscar Blomqvist
  */
-public class ShoppingList {
+@Entity
+public class ShoppingList implements Serializable {
     
     /**
      * The id of the shopping list.
      */
+    @Id
+    @GeneratedValue
     protected int id;
     
     /**
@@ -25,6 +33,11 @@ public class ShoppingList {
      * The text of the shopping list.
      */
     protected String text;
+
+    public ShoppingList() {
+        this.name = "";
+        this.text = "";
+    }
     
     /**
      * @param id
