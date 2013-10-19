@@ -20,7 +20,8 @@
         <jsp:body>
             
             <h1>Något gick fel din n00b, denna sida finns ej! Försök igen.</h1>
-            <h2>NOT FOUND ${request}</h2>
+            <h2>NOT FOUND ${pageContext.request.requestURI} <br/>
+                INFO: Stämmer inte just nu, ska skriva ut vilken sida man ville se men det får vi fixa i servleten</h2>
         
         </jsp:body>
     </jsp:element>
