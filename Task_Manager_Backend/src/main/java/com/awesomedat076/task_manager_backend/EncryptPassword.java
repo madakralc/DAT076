@@ -20,7 +20,7 @@ import sun.misc.*;
 public class EncryptPassword {
    
     private static final String ALGORITHM = "AES";
-    private static final byte[] keyValue = new byte[] {'D','a','T','0','6','7'}; 
+    private static final byte[] keyValue = new byte[] {'D','a','T','0','6','7','D','a','T','0','6','7','D','a','T','0'}; 
     
     /**
      * This method encrypts the password.
