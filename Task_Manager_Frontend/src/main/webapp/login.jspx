@@ -21,14 +21,18 @@
 
                 <link rel="stylesheet" type="text/css" href="res/css/login.css" />
                 <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
+                
+                     
+                
         </head>
-        <body>
+            <body>
             <script>
             if(${subscribed == 'true'}){
                 alert("Login failed, please very username and password");
             }
             </script>
 
+                <div id="centerlogin">
 
                <section class="loginform cf">
                    <form name="login" action="TaskMgrServlet?action=login" method="post" accept-charset="utf-8">
@@ -46,6 +50,8 @@
                        </ul>
                    </form>
                </section>
+                    
+                </div>
         </body>
         </html>
 

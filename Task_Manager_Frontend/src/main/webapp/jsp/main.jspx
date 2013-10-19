@@ -19,6 +19,7 @@
         <head>
                 <title>Task Manager Login</title>
                 <link rel="stylesheet" type="text/css" href="/Task_Manager_Frontend/res/css/normalize.css" />
+                <script type="text/javascript" src="/Task_Manager_Frontend/js/center.js"></script> 
         </head>
         <body>
             
