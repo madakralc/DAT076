@@ -21,11 +21,11 @@
 
                 <link rel="stylesheet" type="text/css" href="res/css/login.css" />
                 <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
+                
+                     
+                
         </head>
-        <body>
-            
-            
-            
+            <body>
             <script>
             if(${login_faild == 'true'}){
             
@@ -33,6 +33,7 @@
             }
             </script>
 
+                <div id="centerlogin">
 
 
                <section class="loginform cf">
@@ -51,6 +52,8 @@
                        </ul>
                    </form>
                </section>
+                    
+                </div>
         </body>
         </html>
 
