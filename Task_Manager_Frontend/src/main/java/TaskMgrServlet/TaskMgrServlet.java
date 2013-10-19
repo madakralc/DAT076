@@ -69,8 +69,6 @@ public class TaskMgrServlet extends HttpServlet {
                     Logger.getAnonymousLogger().log(Level.INFO, "Action blev {0} username = {1} password = {2}", new Object[]{action, username, password});
                     //request.getRequestDispatcher("/index.jspx").forward(request, response);
                     if(username != null & password != null){
-                        password = EncryptPassword.encryptPassword(password, username);
-                        Logger.getAnonymousLogger().log(Level.INFO, "encrypted password is = {0}", password);
                         if(ap.validateLogin(username, password))
                         {
                             //Autentication passed
