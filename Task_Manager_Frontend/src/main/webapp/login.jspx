@@ -39,11 +39,11 @@
                        <ul>
                            <li>
                                <label for="usermail">Email</label>
-                               <input type="email" name="username" placeholder="yourname@email.com" required="true" value="a@b.se"/>
+                               <input type="email" name="username" placeholder="yourname@email.com" required="true"/>
                            </li>
                            <li>
                                <label for="password">Password</label>
-                               <input type="password" name="password" placeholder="password" required="true" value="hej"/></li>
+                               <input type="password" name="password" placeholder="password" required="true"/></li>
                            <li>
                                <input type="submit" value="Login" />
                            </li>
