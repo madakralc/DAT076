@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : menu
+    Created on : Oct 19, 2013, 9:29:24 PM
+    Author     : Adam
+-->
+<menu>
+    <a href="/Task_Manager_Frontend/jsp/main.jspx" class="menubutton">Hem</a>
+    <a href="/Task_Manager_Frontend/jsp/list.jspx" class="menubutton">Lista</a>
+    <a href="/Task_Manager_Frontend/jsp/static/about.jspx" class="menubutton">Om</a>
+    <a href="/Task_Manager_Frontend/TaskMgrServlet?action=logoff" class="menubutton">Logoff</a>   
+</menu>

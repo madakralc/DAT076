@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-    Document   : main
-    Created on : Oct 19, 2013, 3:12:10 PM
+    Document   : about
+    Created on : Oct 19, 2013, 9:43:35 PM
     Author     : Adam
 -->
 <jsp:root 
@@ -28,25 +28,20 @@
             var x = new Date();
             </script>
             
-            <jsp:directive.include file="static/header.jspx" />
-            <jsp:directive.include file="static/menu.jspx" />
+            <jsp:directive.include file="/jsp/static/header.jspx" />
+            <jsp:directive.include file="/jsp/static/menu.jspx" />
             <br />
             <br />
             
-            <h2>Startsidan efter att man loggat in</h2>
+            <h2>En massa about us text här så blir det bra.</h2>
             
             
             
             <br />
 
-            <jsp:directive.include file="static/footer.jspx" />
+            <jsp:directive.include file="/jsp/static/footer.jspx" />
             <br />
-            <jsp:directive.include file="static/sessionInfo.jsp" />
+            <jsp:directive.include file="/jsp/static/sessionInfo.jsp" />
         </body>
         </html>
-
-    
-
-  
 </jsp:root>
-

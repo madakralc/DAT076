@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-    Document   : main
-    Created on : Oct 19, 2013, 3:12:10 PM
+    Document   : list
+    Created on : Oct 19, 2013, 9:50:36 PM
     Author     : Adam
 -->
 <jsp:root 
@@ -33,7 +33,7 @@
             <br />
             <br />
             
-            <h2>Startsidan efter att man loggat in</h2>
+            <h2>HÄR SKA EN LISTA LIGGA SENARE</h2>
             
             
             
@@ -44,9 +44,4 @@
             <jsp:directive.include file="static/sessionInfo.jsp" />
         </body>
         </html>
-
-    
-
-  
 </jsp:root>
-
