@@ -89,7 +89,13 @@ public class TaskMgrServlet extends HttpServlet {
                         request.getRequestDispatcher("www.google.se").forward(request, response);
                     }
                 break;
-                
+                case "logoff":
+
+                    session.invalidate();
+                    session = request.getSession(true); 
+                    request.getRequestDispatcher("login.jspx").forward(request, response);
+                break;
+                    
                 default:
                     ;
             }
