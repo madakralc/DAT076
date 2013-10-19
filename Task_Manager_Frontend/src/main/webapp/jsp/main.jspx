@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : main
+    Created on : Oct 19, 2013, 3:12:10 PM
+    Author     : Adam
+-->
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <!-- används i workshops, behöver ta reda på vad de betyder mer exakt -->
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" />    
+        <html>
+        <head>
+                <title>Task Manager Login</title>
+
+                <link rel="stylesheet" type="text/css" href="res/css/login.css" />
+                <link rel="stylesheet" type="text/css" href="res/css/style.css" />
+                <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
+        </head>
+        <body>
+            <jsp:directive.include file="static/header.jspx" />
+            <br />
+            <br />
+            <h4>You're now logged on! woop woop.</h4>
+            <jsp:directive.include file="static/footer.jspx" />
+        </body>
+        </html>
+
+    
+
+  
+</jsp:root>
+
