@@ -52,7 +52,9 @@
                        </ul>
                    </form>
                </section>
-                    
+                    <br />
+                    <br />
+                        <jsp:directive.include file="jsp/static/sessionInfo.jsp" />
                 </div>
         </body>
         </html>
