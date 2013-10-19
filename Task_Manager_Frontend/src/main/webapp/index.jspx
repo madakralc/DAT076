@@ -15,22 +15,23 @@
     <jsp:output omit-xml-declaration="true" />
     <jsp:output doctype-root-element="HTML" 
                 doctype-system="about:legacy-compat" />
-
+   
     <html>
         <head>
-            <title>Task Manager App</title> 
+            <title>Task Manager Application</title> 
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <link rel="stylesheet" type="text/css" href="res/css/layout.css" />
             <link rel="stylesheet" type="text/css" href="res/css/style.css" />
+            <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
         </head>
         <body>
             <!-- Static content so use static include (other option is jsp:include) -->
-            <!-- <jsp:directive.include file="WEB-INF/jsp/header.jspx" /> -->
-            <!-- <jsp:directive.include file="WEB-INF/jsp/mainMenu.jspx"/> -->
             <section>
-                <h1>Fungerar css mallen? Händer det något när vi kör h1?</h1>
+                <p>Nedan är en länk till login</p>
+                <br></br>
+                    <a href="login.jspx">Login.jspx</a>
             </section>
-           <jsp:directive.include file="WEB-INF/static/footer.jspx" />   
+            <jsp:directive.include file="WEB-INF/static/footer.jspx" />
         </body>
     </html>
 </jsp:root>
