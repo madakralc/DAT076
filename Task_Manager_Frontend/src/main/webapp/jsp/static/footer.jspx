@@ -5,5 +5,9 @@
     Author     : Adam
 -->
 <footer>
-    <p> Footer. Chalmers University of Technology</p>
+    <p>Chalmers University of Technology. <br /> Current time and date is:             
+            <script>
+            document.write(new Date());
+            </script>
+    </p>
 </footer>

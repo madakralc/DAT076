@@ -2,7 +2,7 @@
 @import url(http://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css);
 
 
-/*! normalize.css 2012-07-07T09:50 UTC - http://github.com/necolas/normalize.css */
+/*! Basen är från normalize.css 2012-07-07T09:50 UTC - http://github.com/necolas/normalize.css dock extremt mycket moddningar av oss /AC*/
 
 /* ==========================================================================
    HTML5 display definitions
@@ -118,8 +118,11 @@ a:focus {
 a:active,
 a:hover {
     outline: 0;
+    color: #00a2e2
 }
-
+a:visited{
+    color: orange;
+}
 /* ==========================================================================
    Typography
    ========================================================================== */
@@ -132,6 +135,7 @@ a:hover {
 h1 {
     font-size: 2em;
     margin: 0.67em 0;
+    color: orange;
 }
 
 h2 {

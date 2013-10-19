@@ -18,16 +18,20 @@
         <html>
         <head>
                 <title>Task Manager Login</title>
-
-                <link rel="stylesheet" type="text/css" href="res/css/login.css" />
-                <link rel="stylesheet" type="text/css" href="res/css/style.css" />
-                <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
+                <link rel="stylesheet" type="text/css" href="/Task_Manager_Frontend/res/css/normalize.css" />
         </head>
         <body>
+            
+            <script>
+            var x = new Date();
+            </script>
+            
             <jsp:directive.include file="static/header.jspx" />
             <br />
             <br />
-            <h4>You're now logged on! woop woop.</h4>
+            <h4>Hej: usernamehere</h4>
+            <br />
+            <h4>Klicka <a href="../login.jspx">här</a> för att logga ut.</h4>
             <jsp:directive.include file="static/footer.jspx" />
         </body>
         </html>
