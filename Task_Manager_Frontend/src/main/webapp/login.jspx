@@ -23,13 +23,19 @@
                 <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
         </head>
         <body>
+            <script>
+            if(${subscribed == 'true'}){
+                alert("Login failed, please very username and password");
+            }
+            </script>
+
 
                <section class="loginform cf">
-                   <form name="login" action="TaskMgrServlet" method="post" accept-charset="utf-8">
+                   <form name="login" action="TaskMgrServlet?action=login" method="post" accept-charset="utf-8">
                        <ul>
                            <li>
                                <label for="usermail">Email</label>
-                               <input type="email" name="usermail" placeholder="yourname@email.com" required="true" value="a@b.se"/>
+                               <input type="email" name="username" placeholder="yourname@email.com" required="true" value="a@b.se"/>
                            </li>
                            <li>
                                <label for="password">Password</label>
