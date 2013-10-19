@@ -12,6 +12,5 @@
         <br />
     Du loggade in med mailadress: ${USERNAME}
     <br />
-    Klicka <a href="TaskMgrServlet?action=logoff">här</a> för att logga ut.
     </p>
 </footer>
