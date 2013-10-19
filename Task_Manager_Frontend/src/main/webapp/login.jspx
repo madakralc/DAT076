@@ -15,32 +15,33 @@
     <jsp:output omit-xml-declaration="true" />
     <jsp:output doctype-root-element="HTML" 
                 doctype-system="about:legacy-compat" />    
-    <html>
-<head>
-	<title>Task Manager Login</title>
+        <html>
+        <head>
+                <title>Task Manager Login</title>
 
-	<link rel="stylesheet" type="text/css" href="res/css/login.css" />
-        <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
-</head>
-<body>
-	<section class="loginform cf">
-		<form name="login" action="index_submit" method="get" accept-charset="utf-8">
-			<ul>
-				<li>
-					<label for="usermail">Email</label>
-					<input type="email" name="usermail" placeholder="yourname@email.com" required="true" />
-				</li>
-				<li>
-					<label for="password">Password</label>
-					<input type="password" name="password" placeholder="password" required="true" /></li>
-				<li>
-					<input type="submit" value="Login" />
-				</li>
-			</ul>
-		</form>
-	</section>
-</body>
-</html>
+                <link rel="stylesheet" type="text/css" href="res/css/login.css" />
+                <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
+        </head>
+        <body>
+
+               <section class="loginform cf">
+                   <form name="login" action="TaskMgrServlet" method="post" accept-charset="utf-8">
+                       <ul>
+                           <li>
+                               <label for="usermail">Email</label>
+                               <input type="email" name="usermail" placeholder="yourname@email.com" required="true" value="a@b.se"/>
+                           </li>
+                           <li>
+                               <label for="password">Password</label>
+                               <input type="password" name="password" placeholder="password" required="true" value="hej"/></li>
+                           <li>
+                               <input type="submit" value="Login" />
+                           </li>
+                       </ul>
+                   </form>
+               </section>
+        </body>
+        </html>
 
     
 

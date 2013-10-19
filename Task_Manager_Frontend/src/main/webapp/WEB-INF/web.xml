@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-    Document   : index
-    Created on : Oct 14, 2013, 8:24:35 PM
-    Author     : Adam Clark
--->
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-    
     <!-- random roliga saker att sätta -->
     <display-name>Task Manager App!</display-name>
     <description>Här ska vi senare lägga in en descrip för vår applikation</description>
-        
     <!-- sätta startsida -->
     <welcome-file-list>
-        <welcome-file>index.jspx</welcome-file>
+        <welcome-file>login.jspx</welcome-file>
     </welcome-file-list>
+    <!-- SERVLETS -->
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>TestServlet.TestServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TaskMgrServlet</servlet-name>
+        <servlet-class>TaskMgrServlet.TaskMgrServlet</servlet-class>
+    </servlet>
+    
+    <!-- SERVLET MAPPINGS -->
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/TestServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TaskMgrServlet</servlet-name>
+        <url-pattern>/TaskMgrServlet</url-pattern>
+    </servlet-mapping>
+    
     
     <!-- vi vill inte ha speciellt lång timeout under utvecklingen av applikationen -->
-     <session-config> 
-                <session-timeout>30</session-timeout> 
-     </session-config>
-
-     
-      <!-- Här sätter vi errorsidor, till en början har vi endast 404 men vi kan också fånga exceptionsx --> 
-        <error-page> 
-                <error-code>404</error-code> 
-                <location>/errorpages/error404.jspx</location> 
-        </error-page> 
-    
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <!-- Här sätter vi errorsidor, till en början har vi endast 404 men vi kan också fånga exceptionsx -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errorpages/error404.jspx</location>
+    </error-page>
 </web-app>
