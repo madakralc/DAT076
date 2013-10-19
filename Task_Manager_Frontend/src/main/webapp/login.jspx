@@ -27,12 +27,14 @@
         </head>
             <body>
             <script>
-            if(${subscribed == 'true'}){
+            if(${login_faild == 'true'}){
+            
                 alert("Login failed, please very username and password");
             }
             </script>
 
                 <div id="centerlogin">
+
 
                <section class="loginform cf">
                    <form name="login" action="TaskMgrServlet?action=login" method="post" accept-charset="utf-8">

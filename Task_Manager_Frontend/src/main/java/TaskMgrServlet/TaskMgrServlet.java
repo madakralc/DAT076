@@ -73,15 +73,18 @@ public class TaskMgrServlet extends HttpServlet {
                         if(password.equals(EncryptPassword.encryptPassword("dag", username)))
                         {
                             //Autentication passed
+                            session.setAttribute("login_faild",false);
                              request.setAttribute("USERNAME", username);
                              request.getRequestDispatcher("jsp/main.jspx").forward(request, response);
                         }else{
                             //Autentication failed
-                            
-                            session.setAttribute("subscribed",true);
+                            request.setAttribute("USERNAME", "");
+                            session.setAttribute("login_faild",true);
                             request.getRequestDispatcher("login.jspx").forward(request, response);
                         }   
                     }else{
+                        request.setAttribute("USERNAME", "");
+                        session.setAttribute("login_faild",true);
                         //Autentication failed, no password or no username
                         request.getRequestDispatcher("www.google.se").forward(request, response);
                     }
