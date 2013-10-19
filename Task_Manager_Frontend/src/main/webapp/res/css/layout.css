@@ -5,19 +5,9 @@
     Description:
         tänk på att background color endast hämtas om sidan inte kan hitta background-image. dock fungerar inte background image just nu.
 */
+@import url(http://fonts.googleapis.com/css?family=Roboto:100);
+@import url(http://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css);
 
 root { 
     display: block;
 }
-
-body { 
-    display: block;
-    width: 60em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: groove;
-    border-color: teal;
-    background-image:url('/res/img/bg.jpg');
-    background-color: pink;
-}
-
