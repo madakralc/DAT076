@@ -9,5 +9,10 @@
             <script>
             document.write(new Date());
             </script>
+        <br />
+    Du loggade in med mailadress: ${USERNAME}
+    <br />
+    Klicka <a href="/Task_Manager_Frontend">här</a> för att logga ut.
     </p>
+    
 </footer>

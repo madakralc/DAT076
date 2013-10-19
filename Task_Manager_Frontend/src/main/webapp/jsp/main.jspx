@@ -30,9 +30,10 @@
             <jsp:directive.include file="static/header.jspx" />
             <br />
             <br />
-            <h4>Hej: usernamehere</h4>
+            
+            <h2>HÄR SKA EN LISTA LIGGA SENARE</h2>
+            
             <br />
-            <h4>Klicka <a href="/Task_Manager_Frontend">här</a> för att logga ut.</h4>
             <jsp:directive.include file="static/footer.jspx" />
         </body>
         </html>

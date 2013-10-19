@@ -27,7 +27,7 @@
         </head>
             <body>
             <script>
-            if(${login_faild == 'true'}){
+            if(${login_failed == 'true'}){
             
                 alert("Login failed, please very username and password");
             }
