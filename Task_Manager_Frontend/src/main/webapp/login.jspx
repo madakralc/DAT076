@@ -23,11 +23,16 @@
                 <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
         </head>
         <body>
+            
+            
+            
             <script>
-            if(${subscribed == 'true'}){
+            if(${login_faild == 'true'}){
+            
                 alert("Login failed, please very username and password");
             }
             </script>
+
 
 
                <section class="loginform cf">
