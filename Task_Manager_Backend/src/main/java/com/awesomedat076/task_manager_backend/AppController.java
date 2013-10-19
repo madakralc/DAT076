@@ -35,13 +35,13 @@ public boolean validateLogin(String username, String
 password)
 {
     try {
-        if(validateUser(username) && getPassword
-(username).equals(EncryptPassword.encryptPassword
-(password, username))){
+        if(validateUser(username) && getPassword(username).equals(EncryptPassword.encryptPassword(password, username))){
+            Logger.getAnonymousLogger().log(Level.INFO, "Login is: true");
             return true;
         }
         else return false;
     } catch (Exception ex) {
+        Logger.getAnonymousLogger().log(Level.INFO, "Exception EncryptPassword");
         return false;
     }
 }
