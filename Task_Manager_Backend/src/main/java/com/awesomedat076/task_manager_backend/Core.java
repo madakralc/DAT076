@@ -4,6 +4,7 @@
  */
 package com.awesomedat076.task_manager_backend;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -150,10 +151,23 @@ public class Core {
     
     public ShoppingList getList(int id)
     {
+        ShoppingList list = null;
         if(id < 1)
-            return null;
-        ShoppingList list = listFolder.find(id);
+            return list;
+        list = listFolder.find(id);
 
         return list.getId() == id ? list : null;
+    }
+    
+    public List<ShoppingList> getUserLists(String username)
+    {
+        List<ShoppingList> userLists = null;
+        if(!validateUser(username))
+            return userLists;
+        for(ShoppingList list : listFolder.getByUsername(username))
+        {
+            userLists.add(list);
+        }
+        return userLists.isEmpty()?null:userLists;
     }
 }
