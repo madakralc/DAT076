@@ -40,14 +40,14 @@ public class UserRegistry {
     }
 
     /**
-     * Get a user by the user name.
+     * Gets the user with a specific name.
      * 
      * @param name
      * @return 
      */
     public List<TaskUser> getByName(String name) {
         List<TaskUser> found = new ArrayList<>();
-        for (TaskUser c : getRange(0, getCount()))
+        for (TaskUser c : getUsers())
             if (c.getName().equals(name))
                 found.add(c);
         
@@ -60,8 +60,6 @@ public class UserRegistry {
      * @param t
      */
     public void add(TaskUser user) {
-        
-        System.out.println("DEBUG: user: " + user.getName());
         
         if (user == null)
             throw new IllegalArgumentException("Nulls not allowed");
@@ -212,7 +210,7 @@ public class UserRegistry {
     public void clear() {
         
         //Get all the users.
-        List<TaskUser> users= get(true, 1, 1);
+        List<TaskUser> users = getUsers();
         
         for(TaskUser user : users)
             remove(user.getName());

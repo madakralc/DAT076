@@ -36,36 +36,47 @@ public class ListFolder {
     }
 
     /**
-     * Get a user by the user name.
+     * Find a single list in the list folder.
      * 
      * @param name
      * @return 
      */
-    public List<TaskUser> getByName(String name) {
-        List<TaskUser> found = new ArrayList<>();
-        for (TaskUser c : getRange(0, getCount()))
-            if (c.getName().equals(name))
-                found.add(c);
+    public ShoppingList find(int id) {
+        EntityManager em = getEntityManager();
+        ShoppingList list = (ShoppingList) em.find(ShoppingList.class, id);
+        return list;
+    }
+    
+    /**
+     * Returns the shopping lists of the specified name.
+     * 
+     * @param name
+     * @return 
+     */
+    public List<ShoppingList> getByName(String name) {
+        List<ShoppingList> found = new ArrayList<>();
+        for (ShoppingList l : getRange(0, getCount()))
+            if (l.getName().equals(name))
+                found.add(l);
         
         return found;
     }
     
     /**
-     * Adds a user to the user registry.
+     * Adds a shopping list to the database.
      * 
-     * @param t
+     * @param list 
      */
-    public void add(TaskUser user) {
+    public void add(ShoppingList list) {
         
-        System.out.println("DEBUG: user: " + user.getName());
-        
-        if (user == null)
+        if (list == null)
             throw new IllegalArgumentException("Nulls not allowed");
+        
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(user);
+            em.persist(list);
             em.getTransaction().commit();
         } catch (Exception ex) {
         } finally {
@@ -86,17 +97,17 @@ public class ListFolder {
     }
 
     /**
-     * Removes a user from the user registry.
+     * Removes a shopping list from the database.
      * 
-     * @param name 
+     * @param id 
      */
-    public void remove(String name) {
+    public void remove(int id) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            TaskUser user = (TaskUser) em.getReference(TaskUser.class, name);
-            em.remove(user);
+            ShoppingList list = (ShoppingList) em.getReference(ShoppingList.class, id);
+            em.remove(list);
             em.getTransaction().commit();
         } catch (Exception ex) {
         } finally {
@@ -111,7 +122,7 @@ public class ListFolder {
      * 
      * @param user 
      */
-    public void update(TaskUser user) {
+    public void update(ShoppingList user) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -125,42 +136,30 @@ public class ListFolder {
             }
         }
     }
-
-    /**
-     * Find a user in the user registry with a specified name.
-     * 
-     * @param name
-     * @return 
-     */
-    public TaskUser find(String name) {
-        EntityManager em = getEntityManager();
-        TaskUser user = (TaskUser) em.find(TaskUser.class, name);
-        return user;
-    }
     
     /**
-     * Gets a list of all the users.
+     * Gets a list of all the shoppping lists.
      * 
      * @return 
      */
-    public List<TaskUser> getUsers() {
+    public List<ShoppingList> getLists() {
         return get(true, 0, 0);
     }
 
     /**
-     * Gets a sublist of user from the user registry. The sublist consists of
+     * Gets a sublist of shopping lists from the database. The sublist consists of
      * first - (first + nItems).
      * 
      * @param first
      * @param nItems
      * @return 
      */
-    public List<TaskUser> getRange(int first, int nItems) {
+    public List<ShoppingList> getRange(int first, int nItems) {
         return get(false, first, nItems);
     }
 
     /**
-     * Returns the size of the user registry.
+     * Returns the size of the list folder.
      * 
      * @return 
      */
@@ -169,7 +168,7 @@ public class ListFolder {
         int count = -1;
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<TaskUser> rt = cq.from(TaskUser.class);
+            Root<ShoppingList> rt = cq.from(ShoppingList.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             count = ((Long) q.getSingleResult()).intValue();
@@ -181,14 +180,43 @@ public class ListFolder {
     }
     
     /**
-     * Gets a sublist of all the users in the user registry. 
+     * Returns all the lists that has the specified owner.
+     * 
+     * @param username
+     * @return 
      */
-    protected List<TaskUser> get(boolean all, int first, int max) {
+    public List<ShoppingList> getByUsername(String username){
+        List<ShoppingList> found = new ArrayList<>();
+        for (ShoppingList l : getLists())
+            if (l.getUsername().equals(username))
+                found.add(l);
+        
+        return found;
+    }
+    
+    /**
+     * Removes all the lists that has the specified owner.
+     * 
+     * @param username
+     * @return 
+     */
+    public void removeByUsername(String username){
+        //Get all the lists.
+        List<ShoppingList> lists = getLists();
+        
+        for(ShoppingList list : lists)
+            remove(list.getId());
+    }
+    
+    /**
+     * Gets a sublist of the shopping lists in the database. 
+     */
+    protected List<ShoppingList> get(boolean all, int first, int max) {
         EntityManager em = getEntityManager();
-        List<TaskUser> found = new ArrayList<>();
+        List<ShoppingList> found = new ArrayList<>();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(TaskUser.class));
+            cq.select(cq.from(ShoppingList.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(max);
@@ -203,15 +231,14 @@ public class ListFolder {
     }
     
     /**
-     * Clears all the users in the user registry.
+     * Clears all the lists in the list folder, primarily used for testing purposes.
      */
     public void clear() {
+        //Get all the lists.
+        List<ShoppingList> lists = getLists();
         
-        //Get all the users.
-        List<TaskUser> users= get(true, 1, 1);
-        
-        for(TaskUser user : users)
-            remove(user.getName());
+        for(ShoppingList list : lists)
+            remove(list.getId());
     }
     
 }

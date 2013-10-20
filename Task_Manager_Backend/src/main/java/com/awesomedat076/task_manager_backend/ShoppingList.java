@@ -33,10 +33,16 @@ public class ShoppingList implements Serializable {
      * The text of the shopping list.
      */
     protected String text;
+    
+    /**
+     * The name of the user that owns this shopping list.
+     */
+    protected String username;
 
     public ShoppingList() {
         this.name = "";
         this.text = "";
+        this.username = "";
     }
     
     /**
@@ -44,10 +50,23 @@ public class ShoppingList implements Serializable {
      * @param name
      * @param text 
      */
-    public ShoppingList(int id, String name, String text){
+    public ShoppingList(String name, String text, String username){
+        this.name = name;
+        this.text = text;
+        this.username = username;
+    }
+    
+    /**
+     * @param id
+     * @param name
+     * @param text 
+     * @param username
+     */
+    public ShoppingList(int id, String name, String text, String username){
         this.id = id;
         this.name = name;
         this.text = text;
+        this.username = username;
     }
     
     /**
@@ -77,11 +96,19 @@ public class ShoppingList implements Serializable {
     
     /**
      * 
+     * @return
+     */
+    public String getUsername(){
+        return username;
+    }
+    
+    /**
+     * 
      * @return 
      */
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", name=" + name + ", text=" + text + '}';
+        return "List{" + "id=" + id + ", name=" + name + ", text=" + text + ", username=" + username + '}';
     }
     
 }
