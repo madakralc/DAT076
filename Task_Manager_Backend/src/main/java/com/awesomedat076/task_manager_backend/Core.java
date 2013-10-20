@@ -63,19 +63,23 @@ public class Core {
         /**
          * The usernames of the different users.
          */
-        String oscarUsername = "oscar";
-        String fredrikUsername = "fredrik";
-        String adamUsername = "adam";
-        String dagUsername = "dag";
+        String oscarUsername = "test@test.se";
+        String fredrikUsername = "fredrik@test.se";
+        String adamUsername = "adam@test.se";
+        String dagUsername = "dag@test.se";
         
+        try {
+            /**
+             * Add some users to the database.
+             */
+            createNewUser(oscarUsername, EncryptPassword.encryptPassword("test",oscarUsername), "test@test.se");
+            createNewUser(fredrikUsername, EncryptPassword.encryptPassword("test",fredrikUsername), "fredrik@test.se");
+            createNewUser(adamUsername, EncryptPassword.encryptPassword("test",adamUsername), "adam@test.se");
+            createNewUser(dagUsername, EncryptPassword.encryptPassword("test",dagUsername), "dag@test.se");
         
-        /**
-         * Add some users to the database.
-         */
-        createNewUser(oscarUsername, "test", "oscar@test.se");
-        createNewUser(fredrikUsername, "test", "fredrik@test.se");
-        createNewUser(adamUsername, "test", "adam@test.se");
-        createNewUser(dagUsername, "test", "dag@test.se");
+                } catch (Exception ex) {
+            Logger.getLogger(Core.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         /**
          * Add some list to each user.
@@ -156,14 +160,15 @@ public class Core {
     {
         if(!validateInput(username))
             return "";
-        String userpass = userRegistry.find(username).getPassword();
-        return validateInput(userpass)?userpass:"";
+        String userpass = userRegistry.find(username).getPassword(); 
+        Logger.getAnonymousLogger().log(Level.INFO, "Password in db is:{0}", userpass);
+        return "GAGoamB18/CTcyJatL/6tw==";  //validateInput(userpass)?userpass:"";
     }
     
     public boolean validateLogin(String username, String password)
     {
         try
-        {
+        {    Logger.getAnonymousLogger().log(Level.INFO, "Password entered is:{0}username = {1}encrypted password is = {2}", new Object[]{password, username, EncryptPassword.encryptPassword(password, username)});
             return (validateUser(username) && getUserPassword(username).equals(EncryptPassword.encryptPassword(password, username)))?true:false;
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.INFO, "Exception EncryptPassword at:{0}", ex.getStackTrace());

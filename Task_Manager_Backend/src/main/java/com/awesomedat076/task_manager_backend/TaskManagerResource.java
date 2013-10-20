@@ -22,16 +22,14 @@ import javax.ws.rs.core.MediaType;
 
 @Path("items")
 public class TaskManagerResource {
-   
-    private Core core;
+
     
     @GET
     @Path("/items")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<ItemProxy> getListItems(@QueryParam("listId") int listId) {
         //****************************************************************REMOVE IN FINAL ************************DEBUGG! 
-        core = new Core();
-        ShoppingList sl = core.getList(listId);
+        ShoppingList sl = Core.getInstance().getList(listId);
         Logger.getAnonymousLogger().log(Level.INFO, "getListItems for list{0}", listId);
         
         LinkedList<ItemProxy> items =  new LinkedList();
@@ -50,20 +48,26 @@ public class TaskManagerResource {
     @Path("/itemList")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<ShoppingListProxy> getUsersLists(@QueryParam("USERNAME") String username) {
-        //****************************************************************REMOVE IN FINAL ************************DEBUGG! 
-        core = new Core(); 
-        username = "dag@daysoft.se"; 
         Logger.getAnonymousLogger().log(Level.INFO, "getListItems for list{0}", username);
         
         List<ShoppingList> list;
         List<ShoppingListProxy> proxyList = new LinkedList();
         
-        list = (LinkedList<ShoppingList>) core.getUserLists(username); 
+        list = (LinkedList<ShoppingList>) Core.getInstance().getUserLists(username); 
         for(ShoppingList l : list) {
             proxyList.add(new ShoppingListProxy(l));
         }
         return proxyList;
     }
     
+    @GET
+    @Path("/init")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public String initDb() {
+        
+        Logger.getAnonymousLogger().log(Level.INFO, "intiDB}");
+        Core.getInstance().addTestData();
+        return "data"; 
+    }
     
 }
