@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.awesomedat076.task_manager_backend;
 
 import java.util.ArrayList;
@@ -14,29 +10,29 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 /**
- * Handles the database communication with the users.
+ * Handles the database communication with the lists.
  *
  * @author Oscar Blomqvist
  */
-public class UserRegistry {
+public class ListFolder {
     
     /**
      * The entity manager factory of the user registry.
      */
     private EntityManagerFactory emf;
     
-    public UserRegistry(String puName){
+    public ListFolder(String puName){
         emf = Persistence.createEntityManagerFactory(puName);
     }
 
     /**
-     * Creates a new instance of the UserRegistry.
+     * Creates a new instance of the ListFolder.
      * 
      * @param puName
      * @return 
      */
-    public static UserRegistry newInstance(String puName) {
-        return new UserRegistry(puName);
+    public static ListFolder newInstance(String puName) {
+        return new ListFolder(puName);
     }
 
     /**

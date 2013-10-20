@@ -30,11 +30,17 @@ public class TaskUser implements Serializable {
     protected String name;
     
     /**
+     * The password of the user.
+     */
+    protected String password;
+    
+    /**
      * The email of the user.
      */
     protected String email;
 
     public TaskUser() {
+        this.password = "";
         this.email = "";
     }
     
@@ -43,8 +49,9 @@ public class TaskUser implements Serializable {
      * @param name
      * @param email
      */
-    public TaskUser(String name, String email){
+    public TaskUser(String name, String password, String email){
         this.name = name;
+        this.password = password;
         this.email = email;
     }
     
@@ -100,9 +107,18 @@ public class TaskUser implements Serializable {
         return name;
     }
     
+    /**
+     * Returns the password of the user.
+     * 
+     * @return 
+     */
+    public String getPassword(){
+        return password;
+    }
+    
     @Override
     public String toString() {
-        return "TaskUser{name=" + name + ", email=" + email + '}';
+        return "TaskUser{name=" + name + ", password=" + password + ", email=" + email + '}';
     }
     
 }
