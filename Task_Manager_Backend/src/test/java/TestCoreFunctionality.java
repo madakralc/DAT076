@@ -2,7 +2,6 @@
 import com.awesomedat076.task_manager_backend.Core;
 import com.awesomedat076.task_manager_backend.ListFolder;
 import com.awesomedat076.task_manager_backend.ShoppingList;
-import com.awesomedat076.task_manager_backend.UserRegistry;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;

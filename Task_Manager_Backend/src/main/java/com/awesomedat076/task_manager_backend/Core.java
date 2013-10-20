@@ -18,7 +18,7 @@ public class Core {
     /**
      * The name of the default persistence unit that should be used.
      */
-    public static final String DEFAULT_PERSISTENCE_UNIT_NAME = "lalala";
+    public static final String DEFAULT_PERSISTENCE_UNIT_NAME = "task_manager_pu";
     
     /**
      * The registry of the users.
