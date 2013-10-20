@@ -96,7 +96,7 @@ public class Core {
     }
     private boolean validateInput(String input)
     {
-        return (input == null && input.isEmpty())?false:true;
+        return (input == null || input.isEmpty() || input.equalsIgnoreCase(""))?false:true;
     }
     private String getUserPassword(String username)
     {
@@ -120,7 +120,28 @@ public class Core {
     public boolean addList(String name, String text, String username)
     {
         if(!validateInput(name) || !validateInput(text) || validateUser(username))
-            return true;
-        return true;
+            return false;
+        //Check so listname is unique for this user
+        if(validateList(name,username))
+            return false;
+        
+        listFolder.add(new ShoppingList(name,text,username));
+        
+        return validateList(name,username)?true:false;
+    }
+    
+    public boolean validateList(String listname, String username)
+    {
+        for(ShoppingList list : listFolder.getByUsername(username))
+           if(list.getName().equalsIgnoreCase(listname))
+               return true;
+        return false;
+    }
+    
+    public boolean removeList(int id)
+    {
+        if(id < 1)
+            return false;
+        return false;
     }
 }
