@@ -119,7 +119,7 @@ public class Core {
     
     public boolean addList(String name, String text, String username)
     {
-        if(!validateInput(name) || !validateInput(text) || validateUser(username))
+        if(!validateInput(name) || !validateInput(text) || !validateUser(username))
             return false;
         //Check so listname is unique for this user
         if(validateList(name,username))
@@ -148,5 +148,12 @@ public class Core {
         return true;
     }
     
-    
+    public ShoppingList getList(int id)
+    {
+        if(id < 1)
+            return null;
+        ShoppingList list = listFolder.find(id);
+
+        return list.getId() == id ? list : null;
+    }
 }
