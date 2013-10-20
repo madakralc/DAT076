@@ -16,6 +16,11 @@ import java.util.logging.Logger;
 public class Core {
     
     /**
+     * A singleton instance of the core class with the default persistence unit.
+     */
+    protected static Core me;
+    
+    /**
      * The name of the default persistence unit that should be used.
      */
     public static final String DEFAULT_PERSISTENCE_UNIT_NAME = "task_manager_pu";
@@ -38,6 +43,17 @@ public class Core {
     public Core (String puName){
         userRegistry = new UserRegistry(puName);
         listFolder = new ListFolder(puName);
+    }
+    
+    /**
+     * Get the singleton instance of Core, with the default persistence unit.
+     * 
+     * @return 
+     */
+    public static Core getInstance(){
+        if(me == null)
+            me = new Core();
+        return me;
     }
     
     /**

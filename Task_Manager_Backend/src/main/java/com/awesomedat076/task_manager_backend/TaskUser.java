@@ -8,6 +8,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
  * Class that represents a user.
@@ -16,11 +17,6 @@ import javax.persistence.Id;
  */
 @Entity
 public class TaskUser implements Serializable {
-    
-    /**
-     * The folder that contains the users lists.
-     */
-    protected transient Folder folder;
     
     /**
      * The name of the user.
@@ -32,6 +28,7 @@ public class TaskUser implements Serializable {
     /**
      * The password of the user.
      */
+    @NotNull
     protected String password;
     
     /**
@@ -53,40 +50,6 @@ public class TaskUser implements Serializable {
         this.name = name;
         this.password = password;
         this.email = email;
-    }
-    
-    /**
-     * Adds a shopping list to the users folder.
-     * 
-     * @param shoppingList 
-     */
-    public void addShoppingListToFolder(ShoppingList shoppingList) {
-        folder.add(shoppingList);
-    }
-
-    /**
-     * Removes a shopping list from the users folder.
-     * 
-     * @param shoppingList 
-     */
-    public void removeShoppingListFromFolder(ShoppingList shoppingList) {
-        folder.remove(shoppingList.getId());
-    }
-
-    /**
-     * Clears the users folder.
-     */
-    public void emptyFolder() {
-        folder = new Folder();
-    }
-
-    /**
-     * Get the users folder.
-     * 
-     * @return 
-     */
-    public Folder getFolder() {
-        return folder;
     }
 
     /**
