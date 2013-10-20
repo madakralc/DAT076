@@ -141,6 +141,15 @@ public class UserRegistry {
         TaskUser user = (TaskUser) em.find(TaskUser.class, name);
         return user;
     }
+    
+    /**
+     * Gets a list of all the users.
+     * 
+     * @return 
+     */
+    public List<TaskUser> getUsers() {
+        return get(true, 0, 0);
+    }
 
     /**
      * Gets a sublist of user from the user registry. The sublist consists of
@@ -204,8 +213,6 @@ public class UserRegistry {
         
         //Get all the users.
         List<TaskUser> users= get(true, 1, 1);
-        
-        System.out.println("DEBUG Users: " + users);
         
         for(TaskUser user : users)
             remove(user.getName());
