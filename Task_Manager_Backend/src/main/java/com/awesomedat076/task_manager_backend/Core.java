@@ -161,13 +161,8 @@ public class Core {
     
     public List<ShoppingList> getUserLists(String username)
     {
-        List<ShoppingList> userLists = null;
         if(!validateUser(username))
-            return userLists;
-        for(ShoppingList list : listFolder.getByUsername(username))
-        {
-            userLists.add(list);
-        }
-        return userLists.isEmpty()?null:userLists;
+            return null;
+        return listFolder.getByUsername(username);
     }
 }

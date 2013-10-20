@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * A test class for the User Registry.
+ * A test class for the List Folder.
  * 
  * @author boscar
  */
@@ -147,6 +147,15 @@ public class TestListFolder {
         //Clears the user registry and the list folder after the test.
         userRegistry.clear();
         listFolder.clear();
+    }
+    
+    /**
+     * Attempts to find a list that does not exist.
+     */
+    @Test
+    public void testFindIncorrectList(){
+        ListFolder listFolder = core.getListFolder();
+        assertFalse(listFolder.find(7) instanceof ShoppingList);
     }
     
 }
