@@ -142,6 +142,11 @@ public class Core {
     {
         if(id < 1)
             return false;
-        return false;
+        listFolder.remove(id);
+        if(listFolder.find(id) instanceof ShoppingList)
+            return false;
+        return true;
     }
+    
+    
 }
