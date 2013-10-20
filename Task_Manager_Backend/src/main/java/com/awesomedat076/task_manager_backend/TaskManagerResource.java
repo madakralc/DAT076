@@ -49,7 +49,7 @@ public class TaskManagerResource {
     @GET
     @Path("/itemList")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<ShoppingListProxy> getListItems(@QueryParam("USERNAME") String username) {
+    public List<ShoppingListProxy> getUsersLists(@QueryParam("USERNAME") String username) {
         //****************************************************************REMOVE IN FINAL ************************DEBUGG! 
         core = new Core(); 
         username = "dag@daysoft.se"; 
