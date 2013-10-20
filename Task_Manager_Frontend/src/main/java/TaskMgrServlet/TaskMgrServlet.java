@@ -23,7 +23,6 @@ import javax.servlet.http.HttpSession;
 public class TaskMgrServlet extends HttpServlet {
 
        HttpSession session;
-       Core core; 
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -36,8 +35,6 @@ public class TaskMgrServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-            core = new Core(); 
-
                 session = request.getSession();
         
         try{
@@ -67,14 +64,16 @@ public class TaskMgrServlet extends HttpServlet {
                     Logger.getAnonymousLogger().log(Level.INFO, "Action blev {0} username = {1} password = {2}", new Object[]{action, username, password});
                     //request.getRequestDispatcher("/index.jspx").forward(request, response);
                     if(username != null & password != null){
-                        if(core.validateLogin(username, password))
+                        if(Core.getInstance().validateLogin(username, password))
                         {
                             //Autentication passed
+                            Logger.getAnonymousLogger().log(Level.INFO, "Autentication passed"); 
                             session.setAttribute("login_failed",false);
                             session.setAttribute("USERNAME", username);
-                             request.getRequestDispatcher("jsp/main.jspx").forward(request, response);
+                            request.getRequestDispatcher("jsp/main.jspx").forward(request, response);
                         }else{
                             //Autentication failed
+                            Logger.getAnonymousLogger().log(Level.INFO, "Autentication faild"); 
                             session.setAttribute("USERNAME", "");
                             session.setAttribute("login_failed",true);
                             request.getRequestDispatcher("login.jspx").forward(request, response);
@@ -82,6 +81,7 @@ public class TaskMgrServlet extends HttpServlet {
                     }else{
                         session.setAttribute("USERNAME", "");
                         session.setAttribute("login_failed",true);
+                        Logger.getAnonymousLogger().log(Level.INFO, "Autentication faild"); 
                         //Autentication failed, no password or no username
                         request.getRequestDispatcher("www.google.se").forward(request, response);
                     }
