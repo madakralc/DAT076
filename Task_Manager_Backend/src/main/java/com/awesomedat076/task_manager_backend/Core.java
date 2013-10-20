@@ -57,6 +57,43 @@ public class Core {
     }
     
     /**
+     * Adds some data to the database. Used for testing purposes.
+     */
+    public void addTestData(){
+        /**
+         * The usernames of the different users.
+         */
+        String oscarUsername = "oscar";
+        String fredrikUsername = "fredrik";
+        String adamUsername = "adam";
+        String dagUsername = "dag";
+        
+        
+        /**
+         * Add some users to the database.
+         */
+        createNewUser(oscarUsername, "test", "oscar@test.se");
+        createNewUser(fredrikUsername, "test", "fredrik@test.se");
+        createNewUser(adamUsername, "test", "adam@test.se");
+        createNewUser(dagUsername, "test", "dag@test.se");
+        
+        /**
+         * Add some list to each user.
+         */
+        addList("grönsaker och sånt", "äpple;päron;citron;gurka;mandarin;", oscarUsername);
+        addList("tacos", "salsa;köttfärs;guacamole;", oscarUsername);
+        
+        addList("städ", "hink;trasor;fönsterputs;grönsåpa;", fredrikUsername);
+        addList("tacos", "salsa;köttfärs;guacamole;", fredrikUsername);
+        
+        addList("grönsaker och sånt", "äpple;päron;citron;gurka;mandarin;", adamUsername);
+        addList("snacks", "grillchips;dumle;djungelvrål;", adamUsername);
+        
+        addList("städ", "hink;trasor;fönsterputs;grönsåpa;", dagUsername);
+        addList("snacks", "grillchips;dumle;djungelvrål;", dagUsername);
+    }
+    
+    /**
      * Returns the user registry.
      * 
      * @return 
