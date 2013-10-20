@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -22,12 +23,15 @@ public class TaskManagerResource {
    
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Item> selectAll() {
-        Logger.getAnonymousLogger().log(Level.INFO, "*** SelectAll");
+    public List<Item> getListItems(@QueryParam("listId") int listId) {
+        //****************************************************************REMOVE IN FINAL ************************DEBUGG! 
+        listId= 1337; 
+        Logger.getAnonymousLogger().log(Level.INFO, "getListItems for list{0}", listId);
         
         AppController ap = new AppController();
+        List<Item> items;
         
-        List<Item> items = (List<Item>) ap.getItemList(1337));
+        items = (List<Item>) ap.getItemList(listId);
         return items;
     }
     
