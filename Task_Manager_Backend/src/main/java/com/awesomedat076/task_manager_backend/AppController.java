@@ -26,35 +26,8 @@ public class AppController {
      * @param password
      * @return 
      */
-    public boolean newUser(String username, String password)
-    {
-        return true;
-    }
 
-    public boolean validateLogin(String username, String password)
-    {
-        try {
-            if(validateUser(username) && getPassword(username).equals(EncryptPassword.encryptPassword(password, username))){
-                Logger.getAnonymousLogger().log(Level.INFO, "Login is: true");
-                return true;
-            }
-            else return false;
-        } catch (Exception ex) {
-            Logger.getAnonymousLogger().log(Level.INFO, "Exception EncryptPassword");
-            return false;
-        }
-    }
-
-    private boolean validateUser(String username)
-    {
-        return true;
-    }
-
-    private String getPassword(String username)
-    {
-        return "QueQWizB4eWrU3oeaLT6V/TZpDDu5qU+Tl77oW4em3Q=";
-    }
-
+    
     public Map<String, Integer> getLists(String username){
          Map<String, Integer> myMap = new HashMap<>();
          myMap.put("Mat1", 1337);
