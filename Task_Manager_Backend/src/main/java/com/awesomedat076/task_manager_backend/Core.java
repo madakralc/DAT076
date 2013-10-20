@@ -60,7 +60,7 @@ public class Core {
     public boolean createNewUser(String username, String password, String email)
     {
         String encryptedPassword = null;
-        if(!validateUser(username) || !validateInput(password) || !validateInput(email))
+        if(validateUser(username) || !validateInput(password) || !validateInput(email))
             return false;
         try
         {
@@ -79,15 +79,19 @@ public class Core {
         
         return validateUser(username)?true:false;
     }
-    
+    /**
+     * 
+     * @param username
+     * @return true if username doesn't exist else false
+     */
     private boolean validateUser(String username)
     {
         if(!validateInput(username))
             return false;
         for(TaskUser user : userRegistry.getUsers())
             if(user.getName().equalsIgnoreCase(username))
-                return false;
-        return true;
+                return true;
+        return false;
         
     }
     private boolean validateInput(String input)
@@ -111,5 +115,12 @@ public class Core {
             Logger.getAnonymousLogger().log(Level.INFO, "Exception EncryptPassword at:{0}", ex.getStackTrace());
             return false;
         }
+    }
+    
+    public boolean addList(String name, String text, String username)
+    {
+        if(!validateInput(name) || !validateInput(text) || validateUser(username))
+            return true;
+        return true;
     }
 }
