@@ -4,8 +4,7 @@
  */
 package TaskMgrServlet;
 
-import com.awesomedat076.task_manager_backend.AppController;
-import com.awesomedat076.task_manager_backend.EncryptPassword;
+import com.awesomedat076.task_manager_backend.Core;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +23,7 @@ import javax.servlet.http.HttpSession;
 public class TaskMgrServlet extends HttpServlet {
 
        HttpSession session;
-     AppController ap; 
+       Core core; 
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -37,8 +36,7 @@ public class TaskMgrServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-        
-                ap = new AppController(); 
+            core = new Core(); 
 
                 session = request.getSession();
         
@@ -69,7 +67,7 @@ public class TaskMgrServlet extends HttpServlet {
                     Logger.getAnonymousLogger().log(Level.INFO, "Action blev {0} username = {1} password = {2}", new Object[]{action, username, password});
                     //request.getRequestDispatcher("/index.jspx").forward(request, response);
                     if(username != null & password != null){
-                        if(ap.validateLogin(username, password))
+                        if(core.validateLogin(username, password))
                         {
                             //Autentication passed
                             session.setAttribute("login_failed",false);
