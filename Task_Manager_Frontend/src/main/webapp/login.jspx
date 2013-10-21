@@ -40,8 +40,8 @@
                    <form name="login" action="TaskMgrServlet?action=login" method="post" accept-charset="utf-8">
                        <ul>
                            <li>
-                               <label for="usermail">Email</label>
-                               <input type="email" name="username" placeholder="yourname@email.com" required="true"/>
+                               <label for="username">Username</label>
+                               <input type="text" name="username" placeholder="username" required="true"/>
                            </li>
                            <li>
                                <label for="password">Password</label>
