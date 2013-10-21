@@ -4,11 +4,8 @@
  */
 package com.awesomedat076.task_manager_backend;
 
-import java.net.URI;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.Consumes;
@@ -19,7 +16,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
@@ -57,9 +53,7 @@ public class TaskManagerResource {
     @Path("user_count")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response getUserCount(){
-        PrimitiveJSONWrapper pjw = new PrimitiveJSONWrapper(core.getUserRegistry().getCount());
-        Logger.getAnonymousLogger().log(Level.INFO, "Amount of users: {0}", core.getUserRegistry().getCount());
-        return Response.ok(pjw, MediaType.APPLICATION_JSON).build();
+        return Response.ok(String.valueOf(core.getUserRegistry().getCount()), MediaType.APPLICATION_JSON).build();
     }
     
     @POST
