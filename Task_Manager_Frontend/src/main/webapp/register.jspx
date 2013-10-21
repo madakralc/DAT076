@@ -20,18 +20,24 @@
 
                 <link rel="stylesheet" type="text/css" href="res/css/login.css" />
                 <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
-                <jsp:text><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script></jsp:text>
-        </head>
-        <body>
-            <jsp:text>
+                <jsp:text><script src="/Task_Manager_Frontend/lib/jquery-1.10.2.min.js"></script></jsp:text>
+                <!--<jsp:text><script type="text/javascript" src="/Task_Manager_Frontend/js/register.js"></script> </jsp:text>-->
+                
+                
+            <!-- får det inte att fungera om man inte har ett tomt script först? Why!? -->    
             <script>
+            $(document).ready(function(){
+            });
+            </script>
+
+           <!-- <script>
                 $(document).ready(function(){
                     alert("Document Ready");
                 });
-                $('#submitButton').click( function() {
+                $("#submitButton").click( function() {
                         alert("all ok");
                         $.ajax({
-                            url: 'http://localhost:42709/Task_Manager_Frontend/rs/items/reg_user',
+                            url: 'http://localhost:8080/Task_Manager_Frontend/rs/items/reg_user',
                             type: 'POST',
                             dataType: 'json',
                             //email används inte just nu. Så vi får göra så här för att databasen inte ska gråta.
@@ -42,9 +48,31 @@
                         });
                     });
           
+            </script> -->
+            
+            
+           <script>
+            $(document).ready(function(){
+              $("#submitButton").click(function(){
+               var path = window.location;
+               var username = document.getElementById("username").value;
+               var email = document.getElementById("email").value;
+               var password = document.getElementById("password").value;
+               var retype = document.getElementById("retype").value;
+               alert(username + "\n" + email + "\n" + password +"\n"+ retype);
+               window.open("/Task_Manager_Frontend/rs/items/add_user/"+username+"/"+password);
+               alert("all ok");
+                        
+              });
+            });
             </script>
-            </jsp:text>
 
+        </head>
+        <body>
+        
+  
+            
+         
             <div id="centerlogin">
                 <section class="loginform cf">
                     
@@ -73,7 +101,6 @@
                         <ul>
                             <li><a href="login.jspx"><input type="submit" value="Cancel" /></a></li>
                             <li><input type="submit" id="submitButton" name="submitButton" value="submitButton" /></li>
-                            <li></li>
                         </ul>
                    
                 </section>

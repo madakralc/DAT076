@@ -57,13 +57,13 @@ public class TaskManagerResource {
         return Response.ok(String.valueOf(core.getUserRegistry().getCount()), MediaType.APPLICATION_JSON).build();
     }
     
-    @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response createUser(@FormParam("name") String name, 
-                               @FormParam("password") String password, 
-                               @FormParam("email") String email){
+    @GET
+    @Path("add_user/{username}/{password}")
+    public Response createUser(@PathParam("username") String username, 
+                               @PathParam("password") String password, 
+                               @PathParam("email") String email){
         try{
-            boolean success = core.createNewUser(name, password, email);
+            boolean success = core.createNewUser(username, password, "notused@atthemoment.com");
             return Response.ok(String.valueOf(success)).build();
         }catch(IllegalArgumentException | UriBuilderException e){
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
@@ -86,7 +86,7 @@ public class TaskManagerResource {
         
         for(ShoppingList list : lists)
             proxyLists.add(new ShoppingListProxy(list));
-        
+        Logger.getAnonymousLogger().log(Level.INFO, "Nu ska alla listor ha kommit fram");
         GenericEntity<List<ShoppingListProxy>> ge = new GenericEntity<List<ShoppingListProxy>>(proxyLists) {};
         
         return  Response.ok(ge).build();
@@ -146,19 +146,20 @@ public class TaskManagerResource {
         return  Response.ok(ge).build();
     }
     
-    @POST
-    @Path("add_item/{id}")
+    @GET
+    @Path("add_item/{id}/{name}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response addItemToList(@PathParam("id") int id, @FormParam("name") String name) {
+    public Response addItemToList(@PathParam("id") int id, @PathParam("name") String name) {
         core.addItemToList(id, name);
-        return  Response.ok("true").build();
+        return  Response.ok().build();
     }
+
     
     @GET
     @Path("init")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response initDb() {
-        Logger.getAnonymousLogger().log(Level.INFO, "initDB}");
+        Logger.getAnonymousLogger().log(Level.INFO, "initDB");
         Core.getInstance().addTestData();
         return Response.ok().build();
     }

@@ -71,7 +71,7 @@ public class Core {
      */
     public void addTestData(){
         if(testDataAdded){
-            Logger.getAnonymousLogger().log(Level.INFO, "Test data allready added.");
+            Logger.getAnonymousLogger().log(Level.INFO, "Test data already added.");
             return;
         }
         
