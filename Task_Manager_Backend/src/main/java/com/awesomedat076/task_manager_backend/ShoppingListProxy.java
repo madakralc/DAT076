@@ -14,14 +14,19 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @author dagf
  */
-@XmlRootElement(name="ShopingList")
+@XmlRootElement(name="ShoppingList")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(name = "ShopingList", propOrder = {
-    "id","name"
+@XmlType(name = "ShoppingList", propOrder = {
+    "id", "username", "name", "text"
 })
 public class ShoppingListProxy {
     
     private ShoppingList sl; 
+    
+    /**
+     * Needed...
+     */
+    public ShoppingListProxy(){}
     
     public ShoppingListProxy(ShoppingList sl){
         this.sl = sl; 
@@ -37,5 +42,14 @@ public class ShoppingListProxy {
         return sl.getName();
     }
     
+    @XmlElement(name="text")
+    public String getText() {
+        return sl.getText();
+    }
+    
+    @XmlElement(name="username")
+    public String getUsername() {
+        return sl.getUsername();
+    }
     
 }

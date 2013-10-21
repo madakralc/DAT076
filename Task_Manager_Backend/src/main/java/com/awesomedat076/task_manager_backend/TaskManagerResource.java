@@ -16,6 +16,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
@@ -72,7 +73,36 @@ public class TaskManagerResource {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
+    
+    @GET
+    @Path("lists")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Response getLists(){
+        List<ShoppingListProxy> proxyLists = new ArrayList<>();
+        List<ShoppingList> lists = core.getListFolder().getLists();
+        
+        for(ShoppingList list : lists)
+            proxyLists.add(new ShoppingListProxy(list));
+        
+        GenericEntity<List<ShoppingListProxy>> ge = new GenericEntity<List<ShoppingListProxy>>(proxyLists) {};
+        
+        return  Response.ok(ge).build();
+    }
 
+    @GET
+    @Path("lists/{username}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Response getListsByUsername(@PathParam("username") String username){
+        List<ShoppingListProxy> proxyLists = new ArrayList<>();
+        List<ShoppingList> lists = core.getUserLists(username);
+        
+        for(ShoppingList list : lists)
+            proxyLists.add(new ShoppingListProxy(list));
+        
+        GenericEntity<List<ShoppingListProxy>> ge = new GenericEntity<List<ShoppingListProxy>>(proxyLists) {};
+        
+        return  Response.ok(ge).build();
+    }
     
     @GET
     @Path("items")

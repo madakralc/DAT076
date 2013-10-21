@@ -12,6 +12,9 @@ import javax.xml.bind.annotation.*;
  */
 @XmlRootElement(name = "User")
 @XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(name = "ShoppingList", propOrder = {
+    "name", "password", "email"
+})
 public class TaskUserProxy {
 
     // The wrapped product
