@@ -20,26 +20,30 @@
 
                 <link rel="stylesheet" type="text/css" href="res/css/login.css" />
                 <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"><jsp:text /></script>
+                <jsp:text><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script></jsp:text>
         </head>
         <body>
+            <jsp:text>
             <script>
                 $(document).ready(function(){
-                    
+                    alert("Document Ready");
                 });
                 $('#submitButton').click( function() {
                         alert("all ok");
                         $.ajax({
-                            url: 'http://localhost:42709/Task_Manager_Frontend/rs/items',
+                            url: 'http://localhost:42709/Task_Manager_Frontend/rs/items/reg_user',
                             type: 'POST',
                             dataType: 'json',
+                            //email används inte just nu. Så vi får göra så här för att databasen inte ska gråta.
                             data: {name: $("#name").val(), password: $("#password").val(), email:$("#email").val()},
                             success: function(data) {
                                       alert(data);
                                      }
                         });
                     });
+          
             </script>
+            </jsp:text>
 
             <div id="centerlogin">
                 <section class="loginform cf">
@@ -47,16 +51,28 @@
                         <ul>
                             <li>
                                 <label for="username">Username</label>
-                                <input type="text" name="email" id="username" placeholder="username" required="true"/>
+                                <input type="text" name="username" id="username" placeholder="username" required="true"/>
                             </li>
+                            <li>
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" placeholder="email" required="true"/>
+                            </li>
+                        </ul>
+
+                       <ul>
                             <li>
                                 <label for="password">Password</label>
                                 <input type="password" name="password" id="password" placeholder="password" required="true"/>
                             </li>
+                            <li>
+                                <label for="retype">Retype</label>
+                                <input type="password" name="retype" id="retype" placeholder="retype password" required="true"/>
+                            </li>
                         </ul>
+
                         <ul>
                             <li><a href="login.jspx"><input type="submit" value="Cancel" /></a></li>
-                            <li><input type="submit" value="Register" /></li>
+                            <li><input type="submit" id="submitButton" name="submitButton" value="submitButton" /></li>
                             <li></li>
                         </ul>
                    
