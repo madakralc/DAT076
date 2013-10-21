@@ -4,12 +4,15 @@
  */
 package com.awesomedat076.task_manager_backend;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -19,6 +22,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilderException;
 import javax.ws.rs.core.UriInfo;
 
 /**
@@ -54,6 +58,19 @@ public class TaskManagerResource {
         PrimitiveJSONWrapper pjw = new PrimitiveJSONWrapper(core.getUserRegistry().getCount());
         Logger.getAnonymousLogger().log(Level.INFO, "Amount of users: {0}", core.getUserRegistry().getCount());
         return Response.ok(pjw, MediaType.APPLICATION_JSON).build();
+    }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response createUser(@FormParam("name") String name, 
+                               @FormParam("password") String password, 
+                               @FormParam("email") String email){
+        try{
+            boolean success = core.createNewUser(name, password, email);
+            return Response.ok(String.valueOf(success)).build();
+        }catch(IllegalArgumentException | UriBuilderException e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     
