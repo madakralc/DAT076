@@ -53,9 +53,7 @@ public class TaskManagerResource {
     @Path("user_count")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response getUserCount(){
-        PrimitiveJSONWrapper pjw = new PrimitiveJSONWrapper(core.getUserRegistry().getCount());
-        Logger.getAnonymousLogger().log(Level.INFO, "Amount of users: {0}", core.getUserRegistry().getCount());
-        return Response.ok(pjw, MediaType.APPLICATION_JSON).build();
+        return Response.ok(String.valueOf(core.getUserRegistry().getCount()), MediaType.APPLICATION_JSON).build();
     }
     
     @POST
