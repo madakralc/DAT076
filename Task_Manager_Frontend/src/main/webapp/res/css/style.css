@@ -6,6 +6,16 @@
         Purpose of the stylesheet follows. BALALBLABLABLBALALLABLALBLAB Skriv nåt kul här sen.
 */
 
+#page-wrap {
+  text-align: left;
+  width: 800px;
+  margin: 0 auto;
+}
+
+body {
+  text-align: center;
+ }
+
 .menubutton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #fceaca;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fceaca;

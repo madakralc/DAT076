@@ -5,12 +5,22 @@
     Author     : Adam
 -->
 <footer>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
     <p>Chalmers University of Technology. <br /> Current time and date is:             
             <script>
             document.write(new Date());
             </script>
         <br />
-    Du loggade in med mailadress: ${USERNAME}
+    Du loggade in med kontonamn: ${USERNAME}
     <br />
     </p>
 </footer>

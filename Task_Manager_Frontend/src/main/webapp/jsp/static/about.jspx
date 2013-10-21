@@ -32,6 +32,8 @@
             <jsp:directive.include file="/jsp/static/menu.jspx" />
             <br />
             <br />
+            <br />
+            <br />
             
             <h2>About Us</h2>
             <p>

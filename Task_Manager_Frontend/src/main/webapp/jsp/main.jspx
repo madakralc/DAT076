@@ -23,7 +23,6 @@
                 <script type="text/javascript" src="/Task_Manager_Frontend/js/center.js"></script> 
         </head>
         <body>
-            
             <script>
             var x = new Date();
             </script>
@@ -32,12 +31,11 @@
             <jsp:directive.include file="static/menu.jspx" />
             <br />
             <br />
-            
-            <h2>Startsidan efter att man loggat in</h2>
-            
-            
-            
             <br />
+            <br />
+            
+            <h2>Du är nu inloggad! Tryck på "Lista" för att se din kom-ihåg lista.</h2>
+
 
             <jsp:directive.include file="static/footer.jspx" />
             <br />
