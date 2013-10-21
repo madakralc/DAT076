@@ -55,23 +55,25 @@
                //Jag vet att vi borde köra jQuery men jag lyckas inte. Detta är en lösning på problemet.
             $(document).ready(function(){
               $("#submitButton").click(function(){
-               var path = window.location;
+               //var path = window.location;
                var username = document.getElementById("username").value;
                var email = document.getElementById("email").value;
                var password = document.getElementById("password").value;
                var retype = document.getElementById("retype").value;
-               var xmlHttp = new XMLHttpRequest();
-               
                var urlString = "/Task_Manager_Frontend/rs/items/add_user/";
                urlString = urlString + username;
                urlString = urlString + "/";
                urlString = urlString + password;
-               alert(username + "\n" + email + "\n" + password +"\n"+ retype);
-               alert(urlString);
+               //alert(username + "\n" + email + "\n" + password +"\n"+ retype);
+               //Det är en fullösning att ha en alert, vet inte varför den krävs för att det ska skrivas till db:n? Kan det ha med delay att göra?
+               alert("Ditt konto kommer nu skapas!");
+               var xmlHttp = new XMLHttpRequest();
                xmlHttp.open("GET", urlString , true);
                xmlHttp.send(null);
                window.history.back();     
               });
+             
+              
             });
             </script>
 
@@ -110,7 +112,6 @@
                             <li><a href="login.jspx"><input type="submit" value="Cancel" /></a></li>
                             <li><input type="submit" id="submitButton" name="submitButton" value="submitButton" /></li>
                         </ul>
-                   
                 </section>
             </div>
         </body>
