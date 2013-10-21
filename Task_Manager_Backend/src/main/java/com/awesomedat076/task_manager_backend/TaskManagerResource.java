@@ -5,6 +5,7 @@
 package com.awesomedat076.task_manager_backend;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -97,7 +98,7 @@ public class TaskManagerResource {
     public Response getListsByUsername(@PathParam("username") String username){
         List<ShoppingListProxy> proxyLists = new ArrayList<>();
         List<ShoppingList> lists = core.getUserLists(username);
-        
+        if(lists == null) lists = new LinkedList(); 
         for(ShoppingList list : lists)
             proxyLists.add(new ShoppingListProxy(list));
         
@@ -135,6 +136,7 @@ public class TaskManagerResource {
     public Response getListItems(@PathParam("id") int id) {
         List<ItemProxy> proxyItems = new ArrayList<>();
         List<Item> items = core.getList(id).getTextAsItems();
+        if(items == null) items = new LinkedList(); 
         
         for(Item item : items)
             proxyItems.add(new ItemProxy(item));
