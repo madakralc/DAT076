@@ -152,7 +152,7 @@ public class TaskManagerResource {
         return  Response.ok("true").build();
     }
     
-    @POST
+    @GET
     @Path("init")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response initDb() {
