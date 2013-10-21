@@ -8,12 +8,19 @@
  */
 // Run after DOM constructed (same as $(document).ready())
 $(function() { 
-    
+   function getList (){
+           return $.ajax({
 
-    createTable();
-    
-        function createTable() {
-                alert("tb create");
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+           // url: "http://localhost:8080/Task_Manager_Frontend/rs/items/lists/dag",
+            url: "http://localhost:8080/ws_shop_skel/rs/products/getRange?first=1&nItems=3",
+            data: "{}",
+            dataType: "json",
+            success: function (data) {
+                 
+                console.log(data);
+                console.log("Data length 23:" + data.length);
         // Use JQuery and HTML
             var tr;
             $('#products').empty();
@@ -22,15 +29,31 @@ $(function() {
             tr.append("<td>Name</td>");
             $('#products').append(tr);
             
-            for (var i = 0; i < products.length; i++) {
-                tr = $('<tr id="tr' + products[i].id + '" />');
-                tr.append("<td>" + products[i].id + "</td>");
-                tr.append("<td>" + products[i].name + "</td>");
-                tr.append("<td>" + products[i].price + "</td>");
+            for (var i = 0; i < data.length; i++) {
+                tr = $('<tr id="tr' + data[i].id + '" />');
+                tr.append("<td>" + data[i].name + "</td>");
                 $('#products').append(tr);
             }
+            
+            $("#products tbody").on("click", "tr", function () {
+                var product = {};
+                product.id = $(this).children().eq(0).text();
+                product.name = $(this).children().eq(1).text();
+                product.price = $(this).children().eq(2).text();
+                alert(product.id); 
+            });
+            
+            },
+            error: function (result) {
+                alert("Error");
+            }
+        });
+        
+   };
+     
+     
+    getList();
 
-    }
 
 
 
