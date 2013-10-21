@@ -59,6 +59,7 @@ public class TaskMgrServlet extends HttpServlet {
         if (action != null) {
             switch (action) {
                 case "login":
+                    
                     String username = request.getParameter("username");
                     String password = request.getParameter("password");
                     Logger.getAnonymousLogger().log(Level.INFO, "Action blev {0} username = {1} password = {2}", new Object[]{action, username, password});

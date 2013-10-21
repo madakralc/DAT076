@@ -21,6 +21,11 @@ public class Core {
     protected static Core me;
     
     /**
+     * A flag that shows if any instance of core has created test data.
+     */
+    protected static boolean testDataAdded = false;
+    
+    /**
      * The name of the default persistence unit that should be used.
      */
     public static final String DEFAULT_PERSISTENCE_UNIT_NAME = "task_manager_pu";
@@ -36,11 +41,16 @@ public class Core {
     protected ListFolder listFolder;
     
     public Core (){
-        userRegistry = new UserRegistry(DEFAULT_PERSISTENCE_UNIT_NAME);
-        listFolder = new ListFolder(DEFAULT_PERSISTENCE_UNIT_NAME);
+        createDAOs(DEFAULT_PERSISTENCE_UNIT_NAME);
+        addTestData();
     }
     
     public Core (String puName){
+        createDAOs(puName);
+        addTestData();
+    }
+    
+    private void createDAOs(String puName){
         userRegistry = new UserRegistry(puName);
         listFolder = new ListFolder(puName);
     }
@@ -60,10 +70,15 @@ public class Core {
      * Adds some data to the database. Used for testing purposes.
      */
     public void addTestData(){
+        if(testDataAdded){
+            Logger.getAnonymousLogger().log(Level.INFO, "Test data allready added.");
+            return;
+        }
+        
         /**
          * The usernames of the different users.
          */
-        String oscarUsername = "test@test.se";
+        String oscarUsername = "oscar@test.se";
         String fredrikUsername = "fredrik@test.se";
         String adamUsername = "adam@test.se";
         String dagUsername = "dag@test.se";
@@ -72,10 +87,10 @@ public class Core {
             /**
              * Add some users to the database.
              */
-            createNewUser(oscarUsername, EncryptPassword.encryptPassword("test",oscarUsername), "test@test.se");
-            createNewUser(fredrikUsername, EncryptPassword.encryptPassword("test",fredrikUsername), "fredrik@test.se");
-            createNewUser(adamUsername, EncryptPassword.encryptPassword("test",adamUsername), "adam@test.se");
-            createNewUser(dagUsername, EncryptPassword.encryptPassword("test",dagUsername), "dag@test.se");
+            createNewUser(oscarUsername, "test", "test@test.se");
+            createNewUser(fredrikUsername, "test", "fredrik@test.se");
+            createNewUser(adamUsername, "test", "adam@test.se");
+            createNewUser(dagUsername, "test", "dag@test.se");
         
                 } catch (Exception ex) {
             Logger.getLogger(Core.class.getName()).log(Level.SEVERE, null, ex);
@@ -95,6 +110,8 @@ public class Core {
         
         addList("städ", "hink;trasor;fönsterputs;grönsåpa;", dagUsername);
         addList("snacks", "grillchips;dumle;djungelvrål;", dagUsername);
+        
+        testDataAdded = true;
     }
     
     /**
@@ -144,11 +161,16 @@ public class Core {
      */
     private boolean validateUser(String username)
     {
-        if(!validateInput(username))
+        if(!validateInput(username)){
+            Logger.getAnonymousLogger().log(Level.INFO, "Username {0} is not valid.", username);
             return false;
-        for(TaskUser user : userRegistry.getUsers())
-            if(user.getName().equalsIgnoreCase(username))
+        }for(TaskUser user : userRegistry.getUsers()){
+            Logger.getAnonymousLogger().log(Level.INFO, "{0} ?= {1}", new Object[]{username, user.getName()});
+            if(user.getName().equalsIgnoreCase(username)){
+                Logger.getAnonymousLogger().log(Level.INFO, "it is a match!");
                 return true;
+            }
+        }
         return false;
         
     }
@@ -162,14 +184,17 @@ public class Core {
             return "";
         String userpass = userRegistry.find(username).getPassword(); 
         Logger.getAnonymousLogger().log(Level.INFO, "Password in db is:{0}", userpass);
-        return "GAGoamB18/CTcyJatL/6tw==";  //validateInput(userpass)?userpass:"";
+        return validateInput(userpass)?userpass:"";
     }
     
     public boolean validateLogin(String username, String password)
     {
         try
-        {    Logger.getAnonymousLogger().log(Level.INFO, "Password entered is:{0}username = {1}encrypted password is = {2}", new Object[]{password, username, EncryptPassword.encryptPassword(password, username)});
-            return (validateUser(username) && getUserPassword(username).equals(EncryptPassword.encryptPassword(password, username)))?true:false;
+        {   
+            Logger.getAnonymousLogger().log(Level.INFO, "Password entered is: {0} : username = {1} : encrypted password is = {2}", new Object[]{password, username, EncryptPassword.encryptPassword(password, username)});
+            Logger.getAnonymousLogger().log(Level.INFO, "ValidateUser={0}", validateUser(username));
+            Logger.getAnonymousLogger().log(Level.INFO, "{0} ?= {1}", new Object[]{getUserPassword(username), EncryptPassword.encryptPassword(password, username)});
+            return (validateUser(username) && getUserPassword(username).equalsIgnoreCase(EncryptPassword.encryptPassword(password, username)))?true:false;
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.INFO, "Exception EncryptPassword at:{0}", ex.getStackTrace());
             return false;
