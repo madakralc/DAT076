@@ -13,8 +13,8 @@ $(function() {
 
             type: "GET",
             contentType: "application/json; charset=utf-8",
-           // url: "http://localhost:8080/Task_Manager_Frontend/rs/items/lists/dag",
-            url: "http://localhost:8080/ws_shop_skel/rs/products/getRange?first=1&nItems=3",
+            url: "http://localhost:8080/Task_Manager_Frontend/jsp/static/demo",
+           // url: "http://localhost:8080/ws_shop_skel/rs/products/getRange?first=1&nItems=3",
             data: "{}",
             dataType: "json",
             success: function (data) {
