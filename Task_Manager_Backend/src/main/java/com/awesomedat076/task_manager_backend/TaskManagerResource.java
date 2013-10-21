@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -75,6 +76,13 @@ public class TaskManagerResource {
     }
     
     @GET
+    @Path("{id}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Response getList(@PathParam("id") int id){
+        return  Response.ok(new ShoppingListProxy(core.getList(id))).build();
+    }
+    
+    @GET
     @Path("lists")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response getLists(){
@@ -102,6 +110,29 @@ public class TaskManagerResource {
         GenericEntity<List<ShoppingListProxy>> ge = new GenericEntity<List<ShoppingListProxy>>(proxyLists) {};
         
         return  Response.ok(ge).build();
+    }
+    
+    @POST
+    @Path("add/{username}")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response createList(@FormParam("name") String name, @PathParam("username") String username){
+        try{
+            boolean success = core.addList(name, username);
+            return Response.ok(String.valueOf(success)).build();
+        }catch(IllegalArgumentException | UriBuilderException e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+    
+    @DELETE
+    @Path("remove/{id}")
+    public Response removeList(@PathParam("id") int id) {
+        try{
+            boolean success = core.removeList(id);
+            return Response.ok(String.valueOf(success)).build();
+        }catch(Exception e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
     }
     
     @GET

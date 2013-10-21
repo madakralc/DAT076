@@ -99,17 +99,17 @@ public class Core {
         /**
          * Add some list to each user.
          */
-        addList("grönsaker och sånt", "äpple;päron;citron;gurka;mandarin;", oscarUsername);
-        addList("tacos", "salsa;köttfärs;guacamole;", oscarUsername);
+        addList("grönsaker och sånt", "äpple;päron;citron;gurka;mandarin", oscarUsername);
+        addList("tacos", "salsa;köttfärs;guacamole", oscarUsername);
         
-        addList("städ", "hink;trasor;fönsterputs;grönsåpa;", fredrikUsername);
-        addList("tacos", "salsa;köttfärs;guacamole;", fredrikUsername);
+        addList("städ", "hink;trasor;fönsterputs;grönsåpa", fredrikUsername);
+        addList("tacos", "salsa;köttfärs;guacamole", fredrikUsername);
         
-        addList("grönsaker och sånt", "äpple;päron;citron;gurka;mandarin;", adamUsername);
-        addList("snacks", "grillchips;dumle;djungelvrål;", adamUsername);
+        addList("grönsaker och sånt", "äpple;päron;citron;gurka;mandarin", adamUsername);
+        addList("snacks", "grillchips;dumle;djungelvrål", adamUsername);
         
-        addList("städ", "hink;trasor;fönsterputs;grönsåpa;", dagUsername);
-        addList("snacks", "grillchips;dumle;djungelvrål;", dagUsername);
+        addList("städ", "hink;trasor;fönsterputs;grönsåpa", dagUsername);
+        addList("snacks", "grillchips;dumle;djungelvrål", dagUsername);
         
         testDataAdded = true;
     }
@@ -210,6 +210,19 @@ public class Core {
             return false;
         
         listFolder.add(new ShoppingList(name,text,username));
+        
+        return validateList(name,username)?true:false;
+    }
+    
+    public boolean addList(String name, String username)
+    {
+        if(!validateInput(name) || !validateUser(username))
+            return false;
+        //Check so listname is unique for this user
+        if(validateList(name,username))
+            return false;
+        
+        listFolder.add(new ShoppingList(name,username));
         
         return validateList(name,username)?true:false;
     }

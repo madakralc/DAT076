@@ -50,6 +50,17 @@ public class ShoppingList implements Serializable {
      * @param name
      * @param text 
      */
+    public ShoppingList(String name, String username){
+        this.name = name;
+        this.text = "";
+        this.username = username;
+    }
+    
+    /**
+     * @param id
+     * @param name
+     * @param text 
+     */
     public ShoppingList(String name, String text, String username){
         this.name = name;
         this.text = text;
@@ -92,6 +103,18 @@ public class ShoppingList implements Serializable {
      */
     public String getText(){
         return text;
+    }
+    
+    /**
+     * Adds the specified text as well as a ';' to the text variable. 
+     * This is the manner of which items are added to the list.
+     * 
+     * @param item 
+     */
+    public void addItem(String item){
+        if(!text.equals(""))
+            text += ";";
+        text += item;
     }
     
     /**
