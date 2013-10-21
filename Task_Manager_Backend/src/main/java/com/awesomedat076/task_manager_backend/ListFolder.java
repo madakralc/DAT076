@@ -122,12 +122,12 @@ public class ListFolder {
      * 
      * @param user 
      */
-    public void update(ShoppingList user) {
+    public void update(ShoppingList list) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.merge(user);
+            em.merge(list);
             em.getTransaction().commit();
         } catch (Exception ex) {
         } finally {

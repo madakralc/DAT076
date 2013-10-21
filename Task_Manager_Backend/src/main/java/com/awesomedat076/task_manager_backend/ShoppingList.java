@@ -5,6 +5,9 @@
 package com.awesomedat076.task_manager_backend;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -115,6 +118,22 @@ public class ShoppingList implements Serializable {
         if(!text.equals(""))
             text += ";";
         text += item;
+    }
+    
+    /**
+     * Returns the text of the list as the individual items, which in the text
+     * is seperated by ';'.
+     * 
+     * @return 
+     */
+    public List<Item> getTextAsItems(){
+        StringTokenizer st = new StringTokenizer(text, ";");
+        List<Item> items = new ArrayList<>();
+        
+        while(st.hasMoreTokens())
+            items.add(new Item(st.nextToken()));
+        
+        return items;
     }
     
     /**

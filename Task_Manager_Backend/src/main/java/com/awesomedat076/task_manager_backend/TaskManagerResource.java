@@ -136,39 +136,26 @@ public class TaskManagerResource {
     }
     
     @GET
-    @Path("items")
+    @Path("items/{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<ItemProxy> getListItems(@QueryParam("listId") int listId) {
-        //****************************************************************REMOVE IN FINAL ************************DEBUGG! 
-        ShoppingList sl = Core.getInstance().getList(listId);
-        Logger.getAnonymousLogger().log(Level.INFO, "getListItems for list{0}", listId);
+    public Response getListItems(@PathParam("id") int id) {
+        List<ItemProxy> proxyItems = new ArrayList<>();
+        List<Item> items = core.getList(id).getTextAsItems();
         
-        LinkedList<ItemProxy> items =  new LinkedList();
+        for(Item item : items)
+            proxyItems.add(new ItemProxy(item));
         
-        StringTokenizer st = new StringTokenizer(sl.getText(), ";");
-        while(st.hasMoreTokens())
-        {
-            items.add(new ItemProxy(new Item(st.nextToken())));
-        }
-
-        return items;
+        GenericEntity<List<ItemProxy>> ge = new GenericEntity<List<ItemProxy>>(proxyItems) {};
+        
+        return  Response.ok(ge).build();
     }
     
-    
-    @GET
-    @Path("itemList")
+    @POST
+    @Path("add_item/{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<ShoppingListProxy> getUsersLists(@QueryParam("USERNAME") String username) {
-        Logger.getAnonymousLogger().log(Level.INFO, "getListItems for list{0}", username);
-        
-        List<ShoppingList> list;
-        List<ShoppingListProxy> proxyList = new LinkedList();
-        
-        list = (LinkedList<ShoppingList>) Core.getInstance().getUserLists(username); 
-        for(ShoppingList l : list) {
-            proxyList.add(new ShoppingListProxy(l));
-        }
-        return proxyList;
+    public Response addItemToList(@PathParam("id") int id, @FormParam("name") String name) {
+        core.addItemToList(id, name);
+        return  Response.ok("true").build();
     }
     
     @POST

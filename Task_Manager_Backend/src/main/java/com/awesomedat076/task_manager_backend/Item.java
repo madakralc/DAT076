@@ -11,6 +11,7 @@ package com.awesomedat076.task_manager_backend;
 public class Item {
     
     private String name;
+    
     public Item(String name){
         this.name = name;
     }

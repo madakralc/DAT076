@@ -17,16 +17,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name="Item")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(name = "Item", propOrder = {
-    "name"
-})
 
 public class ItemProxy{
 
     // The wrapped product
     private Item item;
 
-    protected ItemProxy() { // Must have
+    /**
+     * Needed...
+     */
+    protected ItemProxy() {
     }
    
     public ItemProxy(Item item) { 

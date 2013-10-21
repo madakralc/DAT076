@@ -261,4 +261,16 @@ public class Core {
             return null;
         return listFolder.getByUsername(username);
     }
+    
+    /**
+     * Adds an item to a list.
+     * 
+     * @param listId
+     * @param itemName 
+     */
+    public void addItemToList(int listId, String itemName){
+        ShoppingList newList = getList(listId);
+        newList.addItem(itemName);
+        listFolder.update(newList);
+    }
 }
