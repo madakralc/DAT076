@@ -14,11 +14,15 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @author dagf
  */
-@XmlRootElement(name="ShoppingList")
+
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(name = "ShoppingList", propOrder = {
-    "id", "username", "name", "text"
+@XmlType(propOrder = {
+    "id", 
+    "username", 
+    "name", 
+    "text"
 })
+///@XmlRootElement(name = "ShoppingList")
 public class ShoppingListProxy {
     
     private ShoppingList sl; 
