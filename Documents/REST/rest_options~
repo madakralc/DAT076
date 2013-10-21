@@ -1,0 +1,45 @@
+Task Manager REST 
+
+{*} =  user input	Ex: {name} = boscar
+
+getUsers
+Description: 	Returns all the TaskUsers as XML.
+url: 		http://localhost:8080/Task_Manager_Frontend/rs/items/
+
+createUser
+Description: 	Creates a new user.
+url: 		http://localhost:8080/Task_Manager_Frontend/rs/items/ --request POST --data "name={username}&password={password}&email={email}"
+
+getList
+Description: 	Returns the list with the specified id as XML.
+url: 		http://localhost:8080/Task_Manager_Frontend/rs/items/lists/{list_id}
+
+getLists
+Description: 	Returns all the lists as XML.
+url: 		http://localhost:8080/Task_Manager_Frontend/rs/items/lists/
+
+getListByUsername
+Description: 	Returns all the lists of the specified username as XML.
+url: 		http://localhost:8080/Task_Manager_Frontend/rs/items/lists/{username}
+
+createList
+Description: 	Creates a list.
+url: 		http://localhost:8080/Task_Manager_Frontend/rs/items/add/{username} --request POST --data "name={list_name}"
+
+removeList
+Description: 	Removes the list with the specified id.
+url: 		http://localhost:8080/Task_Manager_Frontend/rs/items/remove/{list_id} --request DELETE
+
+getListItems
+Description: 	Returns the items of the list with the specified id as XML.
+url: 		http://localhost:8080/Task_Manager_Frontend/rs/items/items/{list_id}
+
+addItemToList
+Description: 	Add an item to the list with the specified id.
+url: 		http://localhost:8080/Task_Manager_Frontend/rs/items/add_item/{list_id} --request POST --data "name={item_name}"
+
+initDb
+Description: 	Adds some test data to the database. Used for testing purposes.
+url: 		http://localhost:8080/Task_Manager_Frontend/rs/items/init --request POST --data "name={item_name}"
+
+
