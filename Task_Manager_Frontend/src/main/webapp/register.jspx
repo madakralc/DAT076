@@ -52,6 +52,7 @@
             
             
            <script>
+               //Jag vet att vi borde köra jQuery men jag lyckas inte. Detta är en lösning på problemet.
             $(document).ready(function(){
               $("#submitButton").click(function(){
                var path = window.location;
@@ -59,10 +60,17 @@
                var email = document.getElementById("email").value;
                var password = document.getElementById("password").value;
                var retype = document.getElementById("retype").value;
+               var xmlHttp = new XMLHttpRequest();
+               
+               var urlString = "/Task_Manager_Frontend/rs/items/add_user/";
+               urlString = urlString + username;
+               urlString = urlString + "/";
+               urlString = urlString + password;
                alert(username + "\n" + email + "\n" + password +"\n"+ retype);
-               window.open("/Task_Manager_Frontend/rs/items/add_user/"+username+"/"+password);
-               alert("all ok");
-                        
+               alert(urlString);
+               xmlHttp.open("GET", urlString , true);
+               xmlHttp.send(null);
+               window.history.back();     
               });
             });
             </script>
