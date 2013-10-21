@@ -78,10 +78,10 @@ public class Core {
         /**
          * The usernames of the different users.
          */
-        String oscarUsername = "oscar@test.se";
-        String fredrikUsername = "fredrik@test.se";
-        String adamUsername = "adam@test.se";
-        String dagUsername = "dag@test.se";
+        String oscarUsername = "oscar";
+        String fredrikUsername = "fredrik";
+        String adamUsername = "adam";
+        String dagUsername = "dag";
         
         try {
             /**
