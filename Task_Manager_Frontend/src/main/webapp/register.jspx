@@ -46,20 +46,18 @@
                     
                         <ul>
                             <li>
-                                <input type="username" name="name" id="name" placeholder="Username" required="true"/>
-                            </li>
-                            <li>
+                                <label for="password">Email</label>
                                 <input type="email" name="email" id="email" placeholder="yourname@email.com" required="true"/>
                             </li>
                             <li>
+                                <label for="password">Password</label>
                                 <input type="password" name="password" id="password" placeholder="password" required="true"/>
                             </li>
                         </ul>
                         <ul>
-                            <li>
-                                <button id="submitButton" value="Register" />
-                            </li>
-                            <li><div id="message"></div></li>
+                            <li><a href="login.jspx"><input type="submit" value="Cancel" /></a></li>
+                            <li><input type="submit" value="Register" /></li>
+                            <li></li>
                         </ul>
                    
                 </section>
