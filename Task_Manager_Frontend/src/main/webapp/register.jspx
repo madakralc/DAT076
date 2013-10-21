@@ -53,6 +53,7 @@
             
            <script>
                //Jag vet att vi borde köra jQuery men jag lyckas inte. Detta är en lösning på problemet. Vi kan tyvärr inte använda mail när vi kör en GET utan det skulle behöva vara en POST. Dock inte fått detta att fungera. mvh AC
+               //när jag hittade "lösningen" med xmlHttp så bör det inte vara problem med POST men då måste rest göras om lite och jag väljer att prioritera annat mvh AC igen
             $(document).ready(function(){
               $("#submitButton").click(function(){
                //var path = window.location;
