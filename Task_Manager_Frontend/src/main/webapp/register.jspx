@@ -52,7 +52,7 @@
             
             
            <script>
-               //Jag vet att vi borde köra jQuery men jag lyckas inte. Detta är en lösning på problemet.
+               //Jag vet att vi borde köra jQuery men jag lyckas inte. Detta är en lösning på problemet. Vi kan tyvärr inte använda mail när vi kör en GET utan det skulle behöva vara en POST. Dock inte fått detta att fungera. mvh AC
             $(document).ready(function(){
               $("#submitButton").click(function(){
                //var path = window.location;
@@ -64,13 +64,19 @@
                urlString = urlString + username;
                urlString = urlString + "/";
                urlString = urlString + password;
-               //alert(username + "\n" + email + "\n" + password +"\n"+ retype);
-               //Det är en fullösning att ha en alert, vet inte varför den krävs för att det ska skrivas till db:n? Kan det ha med delay att göra?
-               alert("Ditt konto kommer nu skapas!");
-               var xmlHttp = new XMLHttpRequest();
-               xmlHttp.open("GET", urlString , true);
-               xmlHttp.send(null);
-               window.history.back();     
+               
+               if(password != retype){
+                   alert("Lösenorden måste vara samma! Försök igen.");
+               }
+               else{
+                    //alert(username + "\n" + email + "\n" + password +"\n"+ retype);
+                    //Det är en fullösning att ha en alert, vet inte varför den krävs för att det ska skrivas till db:n? Kan det ha med delay att göra?
+                    alert("Ditt konto kommer nu skapas!");
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("GET", urlString , true);
+                    xmlHttp.send(null);
+                    window.history.back();   
+               }
               });
              
               
@@ -110,7 +116,7 @@
 
                         <ul>
                             <li><a href="login.jspx"><input type="submit" value="Cancel" /></a></li>
-                            <li><input type="submit" id="submitButton" name="submitButton" value="submitButton" /></li>
+                            <li><input type="submit" id="submitButton" name="submitButton" value="Create Account" /></li>
                         </ul>
                 </section>
             </div>
