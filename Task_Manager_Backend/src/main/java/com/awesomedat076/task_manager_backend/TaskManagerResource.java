@@ -4,6 +4,7 @@
  */
 package com.awesomedat076.task_manager_backend;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -15,6 +16,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
@@ -30,6 +32,20 @@ public class TaskManagerResource {
     private UriInfo uriInfo;
     
     protected Core core = Core.getInstance();
+    
+    @GET
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Response getUsers(){
+        List<TaskUserProxy> proxyUsers = new ArrayList<>();
+        List<TaskUser> users = core.getUserRegistry().getUsers();
+        
+        for(TaskUser user : users)
+            proxyUsers.add(new TaskUserProxy(user));
+        
+        GenericEntity<List<TaskUserProxy>> gl = new GenericEntity<List<TaskUserProxy>>(proxyUsers) {};
+        
+        return  Response.ok(gl).build();
+    }
     
     @GET
     @Path("user_count")
