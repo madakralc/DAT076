@@ -42,12 +42,12 @@ public class Core {
     
     public Core (){
         createDAOs(DEFAULT_PERSISTENCE_UNIT_NAME);
-        addTestData();
+        //addTestData();
     }
     
     public Core (String puName){
         createDAOs(puName);
-        addTestData();
+        //addTestData();
     }
     
     private void createDAOs(String puName){

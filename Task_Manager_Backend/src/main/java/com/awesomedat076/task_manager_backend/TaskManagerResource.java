@@ -10,22 +10,39 @@ import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  *
  * @author Adam
  */
-
 @Path("items")
 public class TaskManagerResource {
+    
+    @Context
+    private UriInfo uriInfo;
+    
+    protected Core core = Core.getInstance();
+    
+    @GET
+    @Path("user_count")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Response getUserCount(){
+        PrimitiveJSONWrapper pjw = new PrimitiveJSONWrapper(core.getUserRegistry().getCount());
+        Logger.getAnonymousLogger().log(Level.INFO, "Amount of users: {0}", core.getUserRegistry().getCount());
+        return Response.ok(pjw, MediaType.APPLICATION_JSON).build();
+    }
 
     
     @GET
-    @Path("/items")
+    @Path("items")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<ItemProxy> getListItems(@QueryParam("listId") int listId) {
         //****************************************************************REMOVE IN FINAL ************************DEBUGG! 
@@ -45,7 +62,7 @@ public class TaskManagerResource {
     
     
     @GET
-    @Path("/itemList")
+    @Path("itemList")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<ShoppingListProxy> getUsersLists(@QueryParam("USERNAME") String username) {
         Logger.getAnonymousLogger().log(Level.INFO, "getListItems for list{0}", username);
@@ -60,14 +77,13 @@ public class TaskManagerResource {
         return proxyList;
     }
     
-    @GET
-    @Path("/init")
+    @POST
+    @Path("init")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public String initDb() {
-        
-        Logger.getAnonymousLogger().log(Level.INFO, "intiDB}");
+    public Response initDb() {
+        Logger.getAnonymousLogger().log(Level.INFO, "initDB}");
         Core.getInstance().addTestData();
-        return "data"; 
+        return Response.ok().build();
     }
     
 }
