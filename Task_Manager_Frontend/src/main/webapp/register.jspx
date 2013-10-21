@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : register
+    Created on : Oct 21, 2013, 2:14:10 PM
+    Author     : Fredrik Lundberg
+-->
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" />    
+    <html>
+        <head>
+                <title>Task Manager Register</title>
+
+                <link rel="stylesheet" type="text/css" href="res/css/login.css" />
+                <link rel="stylesheet" type="text/css" href="res/css/normalize.css" />
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        </head>
+        <body>
+            <script>
+                $(document).ready(function(){
+                    alert("value: ");
+                    if(${register_failed == 'true'})
+                        $("message").text("Username is not free, need to pay");
+                    else
+                        $("message").text("User added successfully!");
+                });
+                
+            </script>
+
+            <div id="centerlogin">
+                <section class="loginform cf">
+                    <form name="register" id="register" action="TaskMgrServlet?action=register" method="post" accept-charset="utf-8">
+                        <ul>
+                            <li>
+                                <input type="username" name="username" placeholder="Username" required="true"/>
+                            </li>
+                            <li>
+                                <input type="email" name="useremail" placeholder="yourname@email.com" required="true"/>
+                            </li>
+                            <li>
+                                <input type="password" name="password" placeholder="password" required="true"/>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <input type="submit" value="Register" />
+                            </li>
+                            <li><div id="message"></div></li>
+                        </ul>
+                    </form>
+                </section>
+            </div>
+        </body>
+    </html>
+</jsp:root>
+

@@ -51,6 +51,9 @@
                            </li>
                        </ul>
                    </form>
+                    <ul>
+                        <li><a href="register.jspx"><input type="submit" value="Register for FREE NOW!" /></a></li>
+                    </ul>
                </section>
                     <br />
                     <br />

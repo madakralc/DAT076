@@ -92,8 +92,22 @@ public class TaskMgrServlet extends HttpServlet {
                     session.invalidate();
                     session = request.getSession(true); 
                     request.getRequestDispatcher("login.jspx").forward(request, response);
-                break;
+                    break;
                     
+                case "register":
+                    Logger.getAnonymousLogger().log(Level.INFO, "Entering register");
+                    String regusername = request.getParameter("username");
+                    String regpassword = request.getParameter("password");
+                    if(regusername.equalsIgnoreCase("apa"))
+                    {
+                        session.setAttribute("USERNAME", "");
+                        session.setAttribute("register_failed",true);
+                        request.getRequestDispatcher("register.jspx").forward(request, response);
+                    }
+                    else
+                        request.getRequestDispatcher("login.jspx").forward(request, response);
+                        
+                    break;
                 default:
                     ;
             }

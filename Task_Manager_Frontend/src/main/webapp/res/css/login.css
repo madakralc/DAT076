@@ -54,6 +54,9 @@ label {
 	display: inline;
 	float: left;
 }
+.loginform a {
+    text-decoration: none;
+}
 .loginform input:not([type=submit]) {
 	padding: 5px;
 	margin-right: 10px;
