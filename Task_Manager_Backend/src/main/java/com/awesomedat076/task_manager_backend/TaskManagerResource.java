@@ -179,11 +179,12 @@ public class TaskManagerResource {
     
     @GET
     @Path("id")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response getCurrentListId(){
         try{
-            PrimitiveJSONWrapper currentId = new PrimitiveJSONWrapper(core.getCurrentId());
-            return Response.ok(currentId).build();
+            PrimitiveJSONWrapper currentId = new PrimitiveJSONWrapper(new Integer(core.getCurrentId()));
+            Logger.getAnonymousLogger().log(Level.INFO, "jsonWrapperValue: {0}", currentId.getValue());
+            return Response.ok(String.valueOf(core.getCurrentId()), MediaType.APPLICATION_JSON).build();
         }catch(IllegalArgumentException | UriBuilderException e){
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
