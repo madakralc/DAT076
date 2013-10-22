@@ -28,9 +28,7 @@ function getList (uName){
 			tr = $("<font size='60'><th font-size=20px><u>To Do list</u></th></font><br /><br />");
 			tr.append('<tr class="ui-widget-header" />');
 			$('#products').append(tr);
-                       
-                    //    var count= 2; 
-                       // console.log("Lenght is: !" +  list.length + "new: " + count);
+
                             if(list.id != null){ 
                                  console.log("kul: !" + list.id);
                                   var count= 0;
@@ -92,12 +90,19 @@ function getItems (itemId){
 			tr = $("<font size='60'><th font-size=20px><u>Name</u></th></font><br /><br />");
 			tr.append('<tr class="ui-widget-header" />');
 			$('#products').append(tr);
-
-			for (var i = 0; i < list.length; i++) {
-				tr = $('<tr id=' + itemId+ '/>');
-				tr.append("<td>" + list[i].name + "</td>");
-				$('#products').append(tr);
-			}
+                            if(list.name != null){ 
+                                 console.log("kul: !" + list.id);
+                                 console.log("no_loop! id:" + list.id);
+                                    tr = $('<tr id=' + itemId + '/>');
+                                    tr.append("<td><button style='width:250px'>" + list.name + "</button></td>");
+                                    $('#products').append(tr);
+                            } else {
+                              for (var i = 0; i < list.length; i++) {
+                            	tr = $('<tr id=' + itemId+ '/>');
+                            	tr.append("<td>" + list[i].name + "</td>");
+                            	$('#products').append(tr);
+                              }
+                            }
 			$("#products tbody").on("click", "tr", function () {
 				id = $(this).closest('tr').attr('id');
 				alert(id);
