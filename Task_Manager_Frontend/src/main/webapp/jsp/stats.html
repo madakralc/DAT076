@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/Task_Manager_Frontend/res/css/style.css" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Users', 'Lists'],
+          ['2013',  4,      200],
+          ['2014',  1259,      5000],
+          ['2015',  2842,       1000],
+          ['2015',  9001,      20252]
+        ]);
+
+        var options = {
+          title: 'Prediction - Future userbase of this application',
+          backgroundColor: 'grey'
+          
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+  </head>
+  <body>
+    <div  id="chart_div" style="width: 500px; height: 300px;"></div>
+
+  </body>
+</html>

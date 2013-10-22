@@ -35,8 +35,13 @@
             <br />
             
             <h2>Du är nu inloggad! Tryck på "Lista" för att se din kom-ihåg lista.</h2>
-
-
+            
+            <br />
+            <br />
+            <br />
+            
+            <jsp:include page="stats.html"/>
+            
             <jsp:directive.include file="static/footer.jspx" />
             <br />
             <jsp:directive.include file="static/sessionInfo.jsp" />
