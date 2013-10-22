@@ -165,4 +165,28 @@ public class TaskManagerResource {
         return Response.ok().build();
     }
     
+    @POST
+    @Path("id/{id}")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response setCurrentListId(@PathParam("id") int id){
+        try{
+            core.setCurrentId(id);
+            return Response.ok().build();
+        }catch(IllegalArgumentException | UriBuilderException e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+    
+    @GET
+    @Path("id")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getCurrentListId(){
+        try{
+            PrimitiveJSONWrapper currentId = new PrimitiveJSONWrapper(core.getCurrentId());
+            return Response.ok(currentId).build();
+        }catch(IllegalArgumentException | UriBuilderException e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+    
 }

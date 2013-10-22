@@ -21,7 +21,16 @@
                 </tbody>
                 <tfoot></tfoot>
             </table>
-            <script>getList();</script>
+            <script>
+                function getURLParameter(name) {
+                    return decodeURI(
+                        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+                    );
+                }
+                console.log("url=" + document.URL);
+                console.log("user=" + getURLParameter("user"));
+                getList(getURLParameter("user"));
+            </script>
         </div>      
     </body>
 </html>

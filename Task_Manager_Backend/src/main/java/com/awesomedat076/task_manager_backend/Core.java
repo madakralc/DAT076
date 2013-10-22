@@ -40,6 +40,11 @@ public class Core {
      */
     protected ListFolder listFolder;
     
+    /**
+     * The current list id.
+     */
+    protected int currentId = 1;
+    
     public Core (){
         createDAOs(DEFAULT_PERSISTENCE_UNIT_NAME);
         //addTestData();
@@ -273,4 +278,23 @@ public class Core {
         newList.addItem(itemName);
         listFolder.update(newList);
     }
+    
+    /**
+     * Set the current id.
+     * 
+     * @param id 
+     */
+    public void setCurrentId(int id){
+        this.currentId = id;
+    }
+    
+    /**
+     * Returns the current id.
+     * 
+     * @return 
+     */
+    public int getCurrentId(){
+        return this.currentId;
+    }
+    
 }

@@ -21,8 +21,9 @@
                 <link rel="stylesheet" type="text/css" href="/Task_Manager_Frontend/res/css/normalize.css" />
                 <link rel="stylesheet" type="text/css" href="/Task_Manager_Frontend/res/css/style.css" />
                 
-                <script type="text/javascript" src="/Task_Manager_Frontend/js/center.js"></script> 
-                <script type="text/javascript" src="/Task_Manager_Frontend/js/listtable.js" ></script>
+                <script type="text/javascript" src="/Task_Manager_Frontend/js/center.js"><jsp:text /></script> 
+                <script type="text/javascript" src="/Task_Manager_Frontend/js/listtable.js" ><jsp:text /></script>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"><jsp:text /></script>
         </head>
         <body>
             
@@ -33,9 +34,25 @@
             <jsp:directive.include file="static/header.jspx" />
             <jsp:directive.include file="static/menu.jspx" />
             <br />
-          
-                    <jsp:include page="/jsp/listtable.html"/>
+                <div id="products-contain" class="ui-widget">
 
+                    <table align="center" id="products" class="ui-widget ui-widget-content">
+                        <thead>
+                            <tr class="ui-widget-header ">
+                                <th>To-do list</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            </tr>
+                        </tbody>
+                        <tfoot></tfoot>
+                    </table>
+                    <script>
+                        console.log("${USERNAME}");
+                        getList("${USERNAME}");
+                    </script>
+                </div>
             <br />
             <br/>
             
