@@ -68,6 +68,33 @@
             
             <input style="width:250px" id="add_list_name" type="text" name="name" required="true"/><br/><br/>
             <button class="listbutton" id="add_list_button" >Add new list item</button>
+            
+                        <script>                      
+                           $(document).ready(function(){
+                            $("#add_list_button").click(function(){
+                                $.getJSON("http://localhost:8080/Task_Manager_Frontend/rs/items/id", function(data){
+                            addItem(data);
+                            });
+                            });
+                        });
+                        function addItem(id){
+
+                                var name = $("#add_list_name").val(); 
+                                $.ajax({
+                                    url: "http://localhost:8080/Task_Manager_Frontend/rs/items/add_item/"+ id + "/" + name,
+                                    type: "GET",
+                                    data: {},
+                                    dataType : "text",
+                                    success: function(data){
+                                        window.location.assign("itemslist.jspx");
+                                    },
+                                    error:function(jqXHR, textStatus, errorThrown) {
+                                        alert("Unable to create list.");
+                                    }
+                                });
+                          };
+
+                    </script>
 
             <jsp:directive.include file="static/footer.jspx" />
             <br />
