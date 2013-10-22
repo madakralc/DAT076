@@ -9,8 +9,6 @@
  *
  */
 
-// Run after DOM constructed (same as $(document).ready())
-$(function() {});
 
 function getList (uName){
     return $.ajax({
@@ -106,7 +104,7 @@ function listToRemove(listToRemove){
             data: {},
             dataType: "json",
             success: function (data) {
-                 console.log("Kommer att ta bort lista med ID: " + listToRemove);
+                console.log("Kommer att ta bort lista med ID: " + listToRemove);
                 window.location.assign("main.jspx");
             },
             error: function (result) {
