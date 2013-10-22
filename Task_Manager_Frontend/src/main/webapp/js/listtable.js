@@ -1,3 +1,5 @@
+ 
+ 
 /*
 * All js for the products.html page 
  * 
@@ -9,23 +11,22 @@
 // Run after DOM constructed (same as $(document).ready())
 $(function() { 
    
-
+ 
 });
-
-
+ 
+ 
 function getList (){
            return $.ajax({
-
             type: "GET",
             contentType: "application/json; charset=utf-8",
            // url: "http://localhost:8080/Task_Manager_Frontend/jsp/static/demo",
             url: "http://localhost:8080/Task_Manager_Frontend/rs/items/lists/dag",
-            data: {id: id,username: username,name: name, text: text},
+            data: {},
             dataType: "json",
             success: function (data) {
-                 
-                console.log(data);
-                console.log("Data length 23:" + data.length);
+                var list = data['ShoppingList']; 
+                console.log(list);
+ 
         // Use JQuery and HTML
             var tr;
             $('#products').empty();
@@ -33,17 +34,17 @@ function getList (){
             tr = $('<tr class="ui-widget-header" />');
             tr.append("<font size='60'><th font-size=20px><u>Todo List</u></th></font><br /><br />");
             $('#products').append(tr);
-            
-            for (var i = 0; i < data.length; i++) {
-                tr = $('<tr id=' + data[i].id + '/>');
-                tr.append("<td><button style='width:250px'>" + data[i].name + "</button></td>");
+ 
+            for (var i = 0; i < list.length; i++) {
+                tr = $('<tr id=' + list[i].id + '/>');
+                tr.append("<td><button style='width:250px'>" + list[i].name + "</button></td>");
                 $('#products').append(tr);
             }
             
             $("#products tbody").on("click", "tr", function () {
                 id = $(this).closest('tr').attr('id');
                 console.log(id); 
-               window.open("itemslist.jspx?id="+id);
+               window.location.assign("itemslist.jspx?id="+id);
             });
             
             },
@@ -54,23 +55,22 @@ function getList (){
         
    };
      
-
+ 
 function getItems (){
     // var id = $_GET('id');
     //        console.log("idt är: "  + id);
    //         console.log("Data length 23:" + data.length);
            return $.ajax({
-
             type: "GET",
             contentType: "application/json; charset=utf-8",
-            //url: "http://localhost:8080/Task_Manager_Frontend/jsp/static/demo2",
+           // url: "http://localhost:8080/Task_Manager_Frontend/jsp/static/demo2",
             url: "http://localhost:8080/Task_Manager_Frontend/rs/items/items/1",
-            data: {name: item},
             dataType: "json",
             success: function (data) {
                
-                console.log(data);
-                 
+                var list = data['Item']; 
+                console.log(list);
+ 
            
         // Use JQuery and HTML
             var tr;
@@ -80,9 +80,9 @@ function getItems (){
             tr.append("<font size='60'><th font-size=20px><u>Name</u></th></font><br /><br />");
             $('#products').append(tr);
             
-            for (var i = 0; i < data.length; i++) {
+            for (var i = 0; i < list.length; i++) {
                 tr = $('<tr id=' + i + '/>');
-                tr.append("<td>" + data[i].item + "</td>");
+                tr.append("<td>" + list[i].name + "</td>");
                 $('#products').append(tr);
             }
             
@@ -94,7 +94,7 @@ function getItems (){
             
             },
             error: function (result) {
-                alert("Error");
+                alert("Error 2");
             }
         });
         
