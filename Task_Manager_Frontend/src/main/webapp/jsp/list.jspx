@@ -51,6 +51,30 @@
                     <script>
                         console.log("${USERNAME}");
                         getList("${USERNAME}");
+                        
+                        $(document).ready(function(){
+                            $("#add_list_button").click(function(){
+                                $.ajax({
+                                    url: "http://localhost:8080/Task_Manager_Frontend/rs/items/add/${USERNAME}",
+                                    type: "POST",
+                                    data: {
+                                        "name": $("#add_list_name").val()
+                                    },
+                                    dataType : "text",
+                                    success: function(data){
+                                        if(data === "true")
+                                            alert("Created list " + $("#add_list_name").val());
+                                        else
+                                            alert("Unable to create list.");
+                                        window.location.assign("list.jspx");
+                                    },
+                                    error:function(jqXHR, textStatus, errorThrown) {
+                                        alert("Unable to create list.");
+                                    }
+                                });
+                            });
+                        });
+                        //action="/Task_Manager_Frontend/rs/items/add/${USERNAME}"
                     </script>
                 </div>
             <br />
@@ -59,10 +83,8 @@
             
             
                
-            <form name="input" action="/Task_Manager_Frontend/rs/items/add/${USERNAME}" method="post">
-             <input style="width:250px"  type="text" name="name" required="true"/><br/><br/>
-            <input class="listbutton" type="submit" value="Create new list" />
-            </form>
+            <input style="width:250px" id="add_list_name" type="text" name="name" required="true"/><br/><br/>
+            <button class="listbutton" id="add_list_button" >Create new list</button>
 
             <jsp:directive.include file="static/footer.jspx" />
             <br />
