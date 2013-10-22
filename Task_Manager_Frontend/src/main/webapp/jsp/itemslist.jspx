@@ -65,6 +65,9 @@
                     </script>
                 </div>
             <br />
+            
+            <input style="width:250px" id="add_list_name" type="text" name="name" required="true"/><br/><br/>
+            <button class="listbutton" id="add_list_button" >Add new list item</button>
 
             <jsp:directive.include file="static/footer.jspx" />
             <br />
