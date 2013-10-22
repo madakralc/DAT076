@@ -32,9 +32,6 @@
             <jsp:directive.include file="static/header.jspx" />
             <jsp:directive.include file="static/menu.jspx" />
             <br />
-            <br />
-            <br />
-            <br />
             
 
            

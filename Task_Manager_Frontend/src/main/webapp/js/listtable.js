@@ -31,12 +31,17 @@ function getList (){
             $('#products').empty();
             
             tr = $('<tr class="ui-widget-header" />');
-            tr.append("<font size='60'><th font-size=20px><u>Name</u></th></font><br /><br />");
+            tr.append("<font size='60'><th font-size=20px><u>Todo List</u></th></font><br /><br />");
             $('#products').append(tr);
             
             for (var i = 0; i < data.length; i++) {
+<<<<<<< HEAD
                 tr = $('<tr id=' + data[i].id + '/>');
                 tr.append("<td>" + data[i].name + "</td>");
+=======
+                tr = $('<tr id="tr' + data[i].id + '" />');
+                tr.append("<td>" + "<button class='menubutton'>" + data[i].name + "</button>" + "</td>");
+>>>>>>> branch 'master' of https://github.com/madakralc/DAT076.git
                 $('#products').append(tr);
             }
             
