@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : list
+    Created on : Oct 19, 2013, 9:50:36 PM
+    Author     : Adam
+-->
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <!-- används i workshops, behöver ta reda på vad de betyder mer exakt -->
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" />    
+        <html>
+        <head>
+                <title>Task Manager Login</title>
+                <link rel="stylesheet" type="text/css" href="/Task_Manager_Frontend/res/css/normalize.css" />
+                <link rel="stylesheet" type="text/css" href="/Task_Manager_Frontend/res/css/style.css" />
+                <script type="text/javascript" src="/Task_Manager_Frontend/js/center.js"></script> 
+                <script type="text/javascript" src="/Task_Manager_Frontend/js/listtable.js" ></script>
+        </head>
+        <body>
+            
+            <script>
+            var x = new Date();
+            </script>
+            
+            <jsp:directive.include file="static/header.jspx" />
+            <jsp:directive.include file="static/menu.jspx" />
+            <br />
+            
+
+           
+            
+             
+                    <jsp:include page="/jsp/static/itemstable.html"/>
+            
+            
+            
+            <br />
+
+            <jsp:directive.include file="static/footer.jspx" />
+            <br />
+            <jsp:directive.include file="static/sessionInfo.jsp" />
+        </body>
+        </html>
+</jsp:root>

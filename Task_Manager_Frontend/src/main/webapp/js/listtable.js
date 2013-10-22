@@ -42,8 +42,8 @@ function getList (){
             
             $("#products tbody").on("click", "tr", function () {
                 id = $(this).closest('tr').attr('id');
-                alert(id); 
-                window.open("main.jspx");
+                console.log(id); 
+               window.open("itemslist.jspx?id="+id);
             });
             
             },
@@ -56,6 +56,9 @@ function getList (){
      
 
 function getItems (){
+    // var id = $_GET('id');
+    //        console.log("idt är: "  + id);
+   //         console.log("Data length 23:" + data.length);
            return $.ajax({
 
             type: "GET",
@@ -65,9 +68,10 @@ function getItems (){
             data: "{}",
             dataType: "json",
             success: function (data) {
-                 
+               
                 console.log(data);
-                console.log("Data length 23:" + data.length);
+                 
+           
         // Use JQuery and HTML
             var tr;
             $('#products').empty();
@@ -78,14 +82,14 @@ function getItems (){
             
             for (var i = 0; i < data.length; i++) {
                 tr = $('<tr id=' + i + '/>');
-                tr.append("<td>" + data[i].text + "</td>");
+                tr.append("<td>" + data[i].item + "</td>");
                 $('#products').append(tr);
             }
             
             $("#products tbody").on("click", "tr", function () {
                 id = $(this).closest('tr').attr('id');
                 alert(id); 
-                window.open("main.jspx");
+               // window.open();
             });
             
             },
