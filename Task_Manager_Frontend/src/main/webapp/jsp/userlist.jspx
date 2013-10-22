@@ -1,0 +1,14 @@
+<div id="products-contain" class="ui-widget">
+    <table id="products" class="ui-widget ui-widget-content">
+        <thead>
+            <tr class="ui-widget-header ">
+                <th><b>Name</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</div>      

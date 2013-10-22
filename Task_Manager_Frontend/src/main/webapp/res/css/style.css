@@ -15,6 +15,16 @@
 body {
   text-align: center;
  }
+ 
+ #products{
+     font-size: 20px;
+     width: 400px; 
+     margin: 20px auto;
+     padding: 20px;
+     border: 0px solid black;
+ }
+ 
+ 
 
 .menubutton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #fceaca;

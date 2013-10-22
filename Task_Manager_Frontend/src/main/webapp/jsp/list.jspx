@@ -21,6 +21,7 @@
                 <link rel="stylesheet" type="text/css" href="/Task_Manager_Frontend/res/css/normalize.css" />
                 <link rel="stylesheet" type="text/css" href="/Task_Manager_Frontend/res/css/style.css" />
                 <script type="text/javascript" src="/Task_Manager_Frontend/js/center.js"></script> 
+                <script type="text/javascript" src="/Task_Manager_Frontend/js/listtable.js" ></script>
         </head>
         <body>
             
@@ -35,7 +36,11 @@
             <br />
             <br />
             
-            <h2>HÄR SKA EN LISTA LIGGA SENARE</h2>
+
+           
+            
+             
+                    <jsp:include page="/jsp/listtable.html"/>
             
             
             

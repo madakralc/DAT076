@@ -1,10 +1,10 @@
 /*
- * All js for the products.html page 
+* All js for the products.html page 
  * 
  * NOTE: Last in file a comment to enable debugging
- * because this is dynamically loaded (doesn't work by default to debug
- * dynamic scripts in Chrome at least...)
- * 
+* because this is dynamically loaded (doesn't work by default to debug
+* dynamic scripts in Chrome at least...)
+* 
  */
 // Run after DOM constructed (same as $(document).ready())
 $(function() { 
@@ -26,7 +26,7 @@ $(function() {
             $('#products').empty();
             
             tr = $('<tr class="ui-widget-header" />');
-            tr.append("<td>Name</td>");
+            tr.append("<font size='60'><th font-size=20px><u>Name</u></th></font><br /><br />");
             $('#products').append(tr);
             
             for (var i = 0; i < data.length; i++) {
