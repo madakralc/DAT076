@@ -43,8 +43,8 @@
             
                
             <form name="input" action="/Task_Manager_Frontend/rs/items/add/${USERNAME}" method="post">
-             <input type="text" name="name" required="true"/><br/><br/>
-            <input type="submit" value="Create new list" />
+             <input style="width:250px"  type="text" name="name" required="true"/><br/><br/>
+            <input class="listbutton" type="submit" value="Create new list" />
             </form>
 
             <jsp:directive.include file="static/footer.jspx" />
