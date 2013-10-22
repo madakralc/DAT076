@@ -1,3 +1,5 @@
+ 
+ 
 /*
  * All js for the products.html page
  *
@@ -56,10 +58,6 @@ function getList (uName){
 		}
 	});
 };
-
-
-
-
 
 function getItems (itemId){
 	return $.ajax({
