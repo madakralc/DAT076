@@ -84,8 +84,21 @@ button,
 input,
 select,
 textarea {
-    font-family: sans-serif;
-    
+    font-family: 'roboto';
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: orange; /* Old browsers */
+    background: -moz-linear-gradient(top,  orange 0%, #e59400 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#64c8ef), color-stop(100%,#e59400)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  orange 0%,#e59400 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  orange 0%,#e59400 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  orange 0%,#e59400 100%); /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='orange', endColorstr='#e59400',GradientType=0 ); /* IE6-9 */
+    color: #fff;
+    padding: 5px 15px;
+    margin-right: 20px;
+    margin-top: 15px;
+    border-radius: 3px;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
 }
 
 /*
@@ -152,6 +165,7 @@ h3 {
 h4 {
     font-size: 1em;
     margin: 1.33em 0;
+    color: orange;
 }
 
 h5 {
