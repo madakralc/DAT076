@@ -88,7 +88,7 @@ public class TaskMgrServlet extends HttpServlet {
                     }
                 break;
                 case "logoff":
-
+                    session.setAttribute("USERNAME", "");
                     session.invalidate();
                     session = request.getSession(true); 
                     request.getRequestDispatcher("login.jspx").forward(request, response);

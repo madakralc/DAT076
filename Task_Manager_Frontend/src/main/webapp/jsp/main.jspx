@@ -25,6 +25,11 @@
         <body>
             <script>
             var x = new Date();
+            $(document).ready(function(){
+                if(${USERNAME == ''}){
+                    window.location.replace("http://localhost:8080/Task_Manager_Frontend");
+                }
+            });
             </script>
             
             <jsp:directive.include file="static/header.jspx" />
