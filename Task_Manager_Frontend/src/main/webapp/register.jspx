@@ -66,7 +66,7 @@
                urlString = urlString + "/";
                urlString = urlString + password;
                
-               if(password != retype){
+               if(password !== retype){
                    alert("Lösenorden måste vara samma! Försök igen.");
                }
                else{
