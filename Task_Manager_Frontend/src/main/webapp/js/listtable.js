@@ -37,13 +37,14 @@ function getList (uName){
 
 			$("#products tbody").on("click", "tr", function () {
 				id = $(this).closest('tr').attr('id');
+                                console.log("Kommer att hämta lista med ID: " + id);
                                 //name = $(this).closest('tr').children('td:first').text();
                                 //window.location.assign("itemslist.jspx?id="+id+"&listname=" + name);
                                 $.ajax({
                                     url: "http://localhost:8080/Task_Manager_Frontend/rs/items/id/"+id,
                                     type: "POST",
                                     success: function(data){
-                                        alert(data);
+                                        //alert(data);
                                         window.location.assign("itemslist.jspx");
                                     },
                                     error:function(jqXHR, textStatus, errorThrown) {
@@ -105,7 +106,7 @@ function listToRemove(listToRemove){
             data: {},
             dataType: "json",
             success: function (data) {
-                alert("removing list with id: " + listToRemove);
+                 console.log("Kommer att ta bort lista med ID: " + listToRemove);
                 window.location.assign("main.jspx");
             },
             error: function (result) {
