@@ -62,25 +62,33 @@
                var password = document.getElementById("password").value;
                var retype = document.getElementById("retype").value;
                var urlString = "/Task_Manager_Frontend/rs/items/add_user/";
-               urlString = urlString + username;
-               urlString = urlString + "/";
-               urlString = urlString + password;
                
                if(password !== retype){
                    alert("Lösenorden måste vara samma! Försök igen.");
                }
                else{
-                    //alert(username + "\n" + email + "\n" + password +"\n"+ retype);
-                    //Det är en fullösning att ha en alert, vet inte varför den krävs för att det ska skrivas till db:n? Kan det ha med delay att göra?
-                    alert("Ditt konto kommer nu skapas!");
-                    var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("GET", urlString , true);
-                    xmlHttp.send(null);
-                    window.history.back();   
-               }
-              });
-             
-              
+                    $.ajax({
+                        url: urlString,
+                        type: "POST",
+                        data: {
+                            "username": $("#username").val(),
+                            "password": $('#password').val(),
+                            "email": $('#email').val()
+                        },
+                        dataType : "text",
+                        success: function(data){
+                            if(data === "true")
+                                alert("Created user " + $("#username").val());
+                            else
+                                alert("Unable to create user.");
+                            window.history.back();
+                        },
+                        error:function(jqXHR, textStatus, errorThrown) {
+                            alert("Unable to create user.");
+                        }
+                    }); 
+                }
+               });
             });
             </script>
 
