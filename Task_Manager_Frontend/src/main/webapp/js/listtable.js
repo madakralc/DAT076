@@ -78,15 +78,14 @@ function getItems (itemId){
 			$('#products').append(tr);
 
 			for (var i = 0; i < list.length; i++) {
-				tr = $('<tr id=' + i + '/>');
+				tr = $('<tr id=' + itemId+ '/>');
 				tr.append("<td>" + list[i].name + "</td>");
 				$('#products').append(tr);
 			}
 			$("#products tbody").on("click", "tr", function () {
 				id = $(this).closest('tr').attr('id');
-
-				alert(name);
 				alert(id);
+                                listToRemove(id); 
 				// window.open();
 			});
 		},
@@ -96,3 +95,22 @@ function getItems (itemId){
 	});
 
 };
+
+
+function listToRemove(listToRemove){
+           return $.ajax({
+            type: "DELETE",
+            contentType: "application/text; charset=utf-8",
+            url: "http://localhost:8080/Task_Manager_Frontend/rs/items/remove/" + listToRemove,
+            data: {},
+            dataType: "json",
+            success: function (data) {
+                alert("removing list with id: " + listToRemove);
+                window.location.assign("main.jspx");
+            },
+            error: function (result) {
+                alert("Error");
+            }
+        });
+        
+   };
