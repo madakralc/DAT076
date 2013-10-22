@@ -14,7 +14,6 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @author dagf
  */
-
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(propOrder = {
     "id", 
@@ -22,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
     "name", 
     "text"
 })
-///@XmlRootElement(name = "ShoppingList")
+@XmlRootElement(name = "ShoppingList")
 public class ShoppingListProxy {
     
     private ShoppingList sl; 
