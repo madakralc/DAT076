@@ -57,13 +57,14 @@ public class TaskManagerResource {
         return Response.ok(String.valueOf(core.getUserRegistry().getCount()), MediaType.APPLICATION_JSON).build();
     }
     
-    @GET
-    @Path("add_user/{username}/{password}")
-    public Response createUser(@PathParam("username") String username, 
-                               @PathParam("password") String password, 
-                               @PathParam("email") String email){
+    @POST
+    @Path("add_user")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response createUser(@FormParam("username") String username, 
+                               @FormParam("password") String password, 
+                               @FormParam("email") String email){
         try{
-            boolean success = core.createNewUser(username, password, "notused@atthemoment.com");
+            boolean success = core.createNewUser(username, password, email);
             return Response.ok(String.valueOf(success)).build();
         }catch(IllegalArgumentException | UriBuilderException e){
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
