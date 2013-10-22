@@ -20,6 +20,7 @@
                 <title>Task Manager Login</title>
                 <link rel="stylesheet" type="text/css" href="/Task_Manager_Frontend/res/css/normalize.css" />
                 <link rel="stylesheet" type="text/css" href="/Task_Manager_Frontend/res/css/style.css" />
+                
                 <script type="text/javascript" src="/Task_Manager_Frontend/js/center.js"></script> 
                 <script type="text/javascript" src="/Task_Manager_Frontend/js/listtable.js" ></script>
         </head>
@@ -32,16 +33,19 @@
             <jsp:directive.include file="static/header.jspx" />
             <jsp:directive.include file="static/menu.jspx" />
             <br />
-            
-
-           
-            
-             
+          
                     <jsp:include page="/jsp/listtable.html"/>
-            
-            
-            
+
             <br />
+            <br/>
+            
+            
+            
+               
+            <form name="input" action="/Task_Manager_Frontend/rs/items/add/${USERNAME}" method="post">
+             <input style="width:250px"  type="text" name="name" required="true"/><br/><br/>
+            <input class="listbutton" type="submit" value="Create new list" />
+            </form>
 
             <jsp:directive.include file="static/footer.jspx" />
             <br />

@@ -31,12 +31,12 @@ function getList (){
             $('#products').empty();
             
             tr = $('<tr class="ui-widget-header" />');
-            tr.append("<font size='60'><th font-size=20px><u>Name</u></th></font><br /><br />");
+            tr.append("<font size='60'><th font-size=20px><u>Todo List</u></th></font><br /><br />");
             $('#products').append(tr);
             
             for (var i = 0; i < data.length; i++) {
                 tr = $('<tr id=' + data[i].id + '/>');
-                tr.append("<td>" + data[i].name + "</td>");
+                tr.append("<td><button style='width:250px'>" + data[i].name + "</button></td>");
                 $('#products').append(tr);
             }
             

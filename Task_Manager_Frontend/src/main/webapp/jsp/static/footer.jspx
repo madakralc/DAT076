@@ -16,6 +16,6 @@
             </script>
         <br />
     Du loggade in med kontonamn: ${USERNAME}
-    <br />
+    <br/>
     </p>
 </footer>
