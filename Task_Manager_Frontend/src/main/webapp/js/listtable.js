@@ -48,7 +48,7 @@ function getList (uName){
 			$("#products tbody").on("click", "tr", function () {
 				id = $(this).closest('tr').attr('id');
                                 console.log("Kommer att hämta lista med ID: " + id);
-                                alert(id);
+
                                 //name = $(this).closest('tr').children('td:first').text();
                                 //window.location.assign("itemslist.jspx?id="+id+"&listname=" + name);
                                 $.ajax({
@@ -105,7 +105,7 @@ function getItems (itemId){
                             }
 			$("#products tbody").on("click", "tr", function () {
 				id = $(this).closest('tr').attr('id');
-				alert(id);
+
                                 listToRemove(id); 
 				// window.open();
 			});
@@ -122,7 +122,7 @@ function getItems (itemId){
 				$('#products').append(tr);
 			$("#products tbody").on("click", "tr", function () {
 				id = $(this).closest('tr').attr('id');
-				alert(id);
+
                                 listToRemove(id); 
 				// window.open();
 			});
