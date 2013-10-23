@@ -26,6 +26,12 @@ import javax.ws.rs.core.UriInfo;
 
 /**
  *
+ * Our rest file used by the frontend to do many tasks. For example there are
+ * "functions" to add users and show the lists in an xml format.
+ * 
+ * We are using many different "cases" of rest, for example both POST/GET,
+ * and different params like FormParam and PathParam
+ * 
  * @author Adam
  */
 @Path("items")

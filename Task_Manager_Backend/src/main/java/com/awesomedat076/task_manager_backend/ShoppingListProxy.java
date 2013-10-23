@@ -11,7 +11,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- *
+ * Class used by the frontend to translate to xml so that the frontend can
+ * interpret the data sent from the backend
+ * 
  * @author dagf
  */
 @XmlAccessorType(XmlAccessType.PROPERTY)

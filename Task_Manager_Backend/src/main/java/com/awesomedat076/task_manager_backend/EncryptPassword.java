@@ -10,7 +10,10 @@ import javax.crypto.spec.SecretKeySpec;
 import sun.misc.*; 
 
 /**
- *
+ * This class is used for encrypting the passwords for all users. We do not want
+ * to save clear text passwords in the database - so this is the reason why we
+ * use this class.
+ * 
  * @author dagf
  */
 public class EncryptPassword {
