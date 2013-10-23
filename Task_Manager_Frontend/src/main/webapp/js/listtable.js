@@ -87,8 +87,7 @@ function getItems (itemId){
 			var tr;
 			$('#products').empty();
 
-			tr = $("<font size='60'><th font-size=20px><u>Name</u></th></font><br /><br />");
-			tr.append('<tr class="ui-widget-header" />');
+			tr = $('<tr class="ui-widget-header" />');
 			$('#products').append(tr);
                             if(list.name != null){ 
                                  console.log("kul: !" + list.id);
@@ -114,8 +113,8 @@ function getItems (itemId){
 			var tr;
 			$('#products').empty();
 
-			tr = $("<font size='60'><th font-size=20px><u>Name</u></th></font><br /><br />");
-			tr.append('<tr class="ui-widget-header" />');
+			
+			tr = $('<tr class="ui-widget-header" />');
 			$('#products').append(tr);
                         tr = $('<tr id=' + itemId+ '/>');
 				tr.append("<td>Tryck för att ta bort tom lista</td>");
